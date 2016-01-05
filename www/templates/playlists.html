@@ -5,17 +5,24 @@
            <button class="button button-icon button-clear"> Hello, User</button>
       </ion-nav-buttons>
       <div class="bar bar-subheader">
-        <h2 class="title"># 1 App for MMA News & Training</h2>
+        <h2 class="title">Select a link to find the training you need:</h2>
 
 
       </div>
 
 
   <ion-content class="padding has-subheader">
-  <p>Welcome to MMA Hustler where you can catch the latest events, news and shop for awesome gear to ramp up your training.</p>
+  <p>Welcome to MMA Hustler where you can find places to train, events, news and shop for awesome gear to ramp up your training.</p>
 
 
-  <center>
+
+    <ion-list>
+
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+      <div class="botnav">
+        <center>
       <p>
       <button class="button button-positive top"><i class="icon ion-calendar"></i> Events</button>
       <button class="button button-positive top"><i class="icon ion-ios-body"></i> Fighters</button>
@@ -24,11 +31,7 @@
       </p>
   
   </center>
-    <ion-list>
-
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item>
+  </div>
 
     </ion-list>
   </ion-content>
