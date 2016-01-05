@@ -1,0 +1,28 @@
+<ion-view view-title="MMA HUSTLER">
+
+  <ion-content class="padding">
+  <center>
+  <p>
+  <button class="button button-positive top"> Events</button>
+  <button class="button button-positive top"> Fighters</button>
+  <button class="button button-positive top"> News</button>
+  <button class="button button-positive top"> Shop</button>
+  </p>
+  <p>Welcome to MMA Hustler where you can catch the latest events, news and shop for awesome gear to ramp up your training.</p>
+  </center>
+    <ion-list>
+
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-view>
+      <ion-footer-bar class="bar-positive">
+      <div class="button-bar">
+      <button class="icon ion-social-twitter button button-clear"></button>
+      <button class="icon ion-social-facebook button button-clear"></button>
+      <button class="icon ion-social-youtube button button-clear"></button>
+      </div>
+    </ion-footer-bar>
