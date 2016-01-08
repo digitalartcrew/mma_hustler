@@ -52,7 +52,24 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('GymsCtrl', function($scope) {
+  $scope.gyms = [
+    { title: 'MMA', id: 1 },
+    { title: 'Boxing', id: 2 },
+    { title: 'Brazilian Jiu Jitsu', id: 3 },
+    { title: 'Fitness/Conditioning', id: 4 },
+    { title: 'Muay Thai', id: 5 },
+    { title: 'Wrestling', id: 6 }
+  ];
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('GymCtrl', function($scope, $stateParams) {
+})
+
+.controller('HomeCtrl', function($scope, $stateParams) {
 })
 
 .controller('DashCtrl', function($scope) {})
