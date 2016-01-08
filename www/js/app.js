@@ -32,23 +32,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  // .state('app.search', {
-  //   url: '/search',
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'templates/search.html'
-  //     }
-  //   }
-  // })
-
-  // .state('app.browse', {
-  //     url: '/browse',
-  //     views: {
-  //       'menuContent': {
-  //         templateUrl: 'templates/browse.html'
-  //       }
-  //     }
-  //   })
 
       .state('app.gyms', {
       url: '/gyms',
@@ -60,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  .state('app.single', {
+  .state('app.singlegym', {
     url: '/gyms/:gymId',
     views: {
       'menuContent': {
@@ -70,53 +53,83 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-    // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+        .state('app.events', {
+      url: '/events',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/events.html',
+          controller: 'EventsCtrl'
+        }
+      }
+    })
 
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
+  .state('app.singleevent', {
+    url: '/events/:eventId',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'menuContent': {
+        templateUrl: 'templates/event.html',
+        controller: 'EventCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('app.fighters', {
+      url: '/fighters',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'menuContent': {
+          templateUrl: 'templates/fighters.html',
+          controller: 'FightersCtrl'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('app.singlefighter', {
+    url: '/fighters/:fighterId',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'menuContent': {
+        templateUrl: 'templates/fighter.html',
+        controller: 'FighterCtrl'
+      }
+    }
+  })
+
+   .state('app.news', {
+      url: '/news',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/news.html',
+          controller: 'NewsCtrl'
+        }
+      }
+    })
+
+  .state('app.story', {
+    url: '/news/:storyId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/story.html',
+        controller: 'FighterCtrl'
+      }
+    }
+  })
+
+    .state('app.shop', {
+    url: '/shop',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/shop.html',
+        controller: 'ShopCtrl'
       }
     }
   });
+
+
+
+
+
+  
+
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/gyms');
 });
