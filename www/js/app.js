@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -119,6 +119,95 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: 'templates/shop.html',
         controller: 'ShopCtrl'
+      }
+    }
+  })
+
+     .state('app.account', {
+    url: '/account',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/account.html',
+        controller: 'AccountCtrl'
+      }
+    }
+  })
+
+          .state('app.progress', {
+    url: '/progress',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/progress.html',
+        controller: 'ProgressCtrl'
+      }
+    }
+  })
+                    .state('app.goals', {
+    url: '/goals',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/goals.html',
+        controller: 'GoalsCtrl'
+      }
+    }
+  })
+                              .state('app.films', {
+    url: '/films',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/films.html',
+        controller: 'FilmsCtrl'
+      }
+    }
+  })
+                                        .state('app.blog', {
+    url: '/blog',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/blog.html',
+        controller: 'BlogCtrl'
+      }
+    }
+  })
+                                                  .state('app.friends', {
+    url: '/friends',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/friends.html',
+        controller: 'FriendsCtrl'
+      }
+    }
+  })
+
+                                                    .state('app.singlefriend', {
+    url: '/friends/:friendId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/friend.html',
+        controller: 'FriendCtrl'
+      }
+    }
+  })
+
+
+
+
+
+                                                            .state('app.instructions', {
+    url: '/instructions',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/instructions.html',
+        controller: 'InstructionsCtrl'
+      }
+    }
+  })
+                                                                      .state('app.photos', {
+    url: '/photos',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/photos.html',
+        controller: 'PhotosCtrl'
       }
     }
   });
