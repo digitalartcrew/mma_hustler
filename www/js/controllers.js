@@ -44,12 +44,12 @@ angular.module('starter.controllers', [])
 
 .controller('GymsCtrl', function($scope) {
   $scope.gyms = [
-    { title: 'MMA', id: 1 },
-    { title: 'Boxing', id: 2 },
-    { title: 'Brazilian Jiu Jitsu', id: 3 },
-    { title: 'Fitness/Conditioning', id: 4 },
-    { title: 'Muay Thai', id: 5 },
-    { title: 'Wrestling', id: 6 }
+  { title: 'MMA', id: 1 },
+  { title: 'Boxing', id: 2 },
+  { title: 'Brazilian Jiu Jitsu', id: 3 },
+  { title: 'Fitness/Conditioning', id: 4 },
+  { title: 'Muay Thai', id: 5 },
+  { title: 'Wrestling', id: 6 }
   ];
 })
 
@@ -95,12 +95,14 @@ angular.module('starter.controllers', [])
 
 .controller('FriendCtrl', function($scope) {})
 
+.controller('FriendsCtrl', function($scope) {})
+
 .controller('InstructionsCtrl', function($scope) {})
 
 .controller('PhotosCtrl', function($scope) {})
 
 .controller('DashCtrl', function($scope) {
-    var deploy = new Ionic.Deploy();
+  var deploy = new Ionic.Deploy();
   
   // Update app code with new release from Ionic Deploy
   $scope.doUpdate = function() {
@@ -134,10 +136,10 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+$scope.chats = Chats.all();
+$scope.remove = function(chat) {
+  Chats.remove(chat);
+};
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
