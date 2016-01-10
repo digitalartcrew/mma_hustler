@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
 
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.signUpData = {};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -30,40 +31,45 @@ angular.module('starter.controllers', [])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+  // $scope.doLogin = function() {
+  //   console.log('Doing login', $scope.loginData);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
+  //   // Simulate a login delay. Remove this and replace with your login
+  //   // code if using a login system
+  //   $timeout(function() {
+  //     $scope.closeLogin();
+  //   }, 1000);
+  // };
 
   $scope.signupEmail = function(){  
  
   var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
  
   ref.createUser({
-    email    : $scope.data.email,
-    password : $scope.data.password
+    email    : "bobtony@firebase.com",
+    password : "correcthorsebatterystaple"
   }, function(error, userData) {
     if (error) {
       console.log("Error creating user:", error);
+
     } else {
       console.log("Successfully created user account with uid:", userData.uid);
+
+        return "/";
+  
     }
   });
  
 };
 
 $scope.loginEmail = function(){
+
  
   var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
  
   ref.authWithPassword({
-    email    : $scope.data.email,
-    password : $scope.data.password
+    email    : "bobtony@firebase.com",
+    password : "correcthorsebatterystaple"
   }, function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
@@ -71,8 +77,18 @@ $scope.loginEmail = function(){
       console.log("Authenticated successfully with payload:", authData);
     }
   });
+
+     // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
  
 };
+
+ $scope.logOut = function(user) {
+    ref.unauth();
+  };
 
 $scope.loginFacebook = function(){
  

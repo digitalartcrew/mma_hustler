@@ -10,12 +10,12 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+  if (window.cordova && window.cordova.plugins.Keyboard) {
+    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
+  }
+  if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
@@ -25,7 +25,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -33,15 +33,15 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
   })
 
 
-      .state('app.gyms', {
-      url: '/gyms',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/home.html',
-          controller: 'GymsCtrl'
-        }
+  .state('app.gyms', {
+    url: '/gyms',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/home.html',
+        controller: 'GymsCtrl'
       }
-    })
+    }
+  })
 
   .state('app.singlegym', {
     url: '/gyms/:gymId',
@@ -53,15 +53,15 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
     }
   })
 
-        .state('app.events', {
-      url: '/events',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/events.html',
-          controller: 'EventsCtrl'
-        }
+  .state('app.events', {
+    url: '/events',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/events.html',
+        controller: 'EventsCtrl'
       }
-    })
+    }
+  })
 
   .state('app.singleevent', {
     url: '/events/:eventId',
@@ -74,14 +74,14 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
   })
 
   .state('app.fighters', {
-      url: '/fighters',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/fighters.html',
-          controller: 'FightersCtrl'
-        }
+    url: '/fighters',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/fighters.html',
+        controller: 'FightersCtrl'
       }
-    })
+    }
+  })
 
   .state('app.singlefighter', {
     url: '/fighters/:fighterId',
@@ -94,15 +94,15 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
   })
 
 
-   .state('app.news', {
-      url: '/news',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/news.html',
-          controller: 'NewsCtrl'
-        }
+  .state('app.news', {
+    url: '/news',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/news.html',
+        controller: 'NewsCtrl'
       }
-    })
+    }
+  })
 
   .state('app.story', {
     url: '/news/:storyId',
@@ -114,7 +114,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
     }
   })
 
-    .state('app.shop', {
+  .state('app.shop', {
     url: '/shop',
     views: {
       'menuContent': {
@@ -124,7 +124,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
     }
   })
 
-     .state('app.account', {
+  .state('app.account', {
     url: '/account',
     views: {
       'menuContent': {
@@ -134,7 +134,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
     }
   })
 
-          .state('app.progress', {
+  .state('app.progress', {
     url: '/progress',
     views: {
       'menuContent': {
@@ -143,7 +143,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
       }
     }
   })
-                    .state('app.goals', {
+  .state('app.goals', {
     url: '/goals',
     views: {
       'menuContent': {
@@ -152,7 +152,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
       }
     }
   })
-                              .state('app.films', {
+  .state('app.films', {
     url: '/films',
     views: {
       'menuContent': {
@@ -161,7 +161,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
       }
     }
   })
-                                        .state('app.blog', {
+  .state('app.blog', {
     url: '/blog',
     views: {
       'menuContent': {
@@ -170,7 +170,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
       }
     }
   })
-                                                  .state('app.friends', {
+  .state('app.friends', {
     url: '/friends',
     views: {
       'menuContent': {
@@ -180,7 +180,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
     }
   })
 
-                                                    .state('app.singlefriend', {
+  .state('app.singlefriend', {
     url: '/friends/:friendId',
     views: {
       'menuContent': {
@@ -190,11 +190,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
     }
   })
 
-
-
-
-
-                                                            .state('app.instructions', {
+  .state('app.instructions', {
     url: '/instructions',
     views: {
       'menuContent': {
@@ -203,7 +199,8 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
       }
     }
   })
-                                                                      .state('app.photos', {
+
+  .state('app.photos', {
     url: '/photos',
     views: {
       'menuContent': {
@@ -211,7 +208,19 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','
         controller: 'PhotosCtrl'
       }
     }
-  });
+  })
+
+    .state('app.signup', {
+    url: '/signup',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/signup.html',
+        controller: 'AppCtrl'
+      }
+    }
+  })
+
+  ;
 
 
 
