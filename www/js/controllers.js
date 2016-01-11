@@ -74,7 +74,8 @@ $scope.loginEmail = function(){
     if (error) {
       console.log("Login Failed!", error);
     } else {
-      console.log("Authenticated successfully with payload:", authData);
+      console.log("Authenticated successfully with payload:");
+   
     }
   });
 
@@ -121,6 +122,8 @@ $scope.loginFacebook = function(){
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:", authData);
+        console.log("Username:" + authData.facebook.displayName);
+        console.log("Profile Image:" + authData.facebook.profileImageURL);
       }
     });
  
@@ -188,6 +191,8 @@ $scope.loginFacebook = function(){
 .controller('InstructionsCtrl', function($scope) {})
 
 .controller('PhotosCtrl', function($scope) {})
+
+
 
 .controller('DashCtrl', function($scope) {
   var deploy = new Ionic.Deploy();
