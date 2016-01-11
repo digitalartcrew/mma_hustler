@@ -124,6 +124,7 @@ $scope.loginFacebook = function(){
         console.log("Authenticated successfully with payload:", authData);
         console.log("Username:" + authData.facebook.displayName);
         console.log("Profile Image:" + authData.facebook.profileImageURL);
+         return "/";
       }
     });
  
