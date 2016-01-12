@@ -1,6 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state) {
+  $scope.data = {};
+
+  $scope.isLoggedIn = function(){
+    return false;
+  };
+ 
+  var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -41,13 +48,11 @@ angular.module('starter.controllers', [])
   //   }, 1000);
   // };
 
-  $scope.signupEmail = function(){  
- 
-  var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
+  $scope.signupEmail = function(data){  
  
   ref.createUser({
-    email    : "bobtony@firebase.com",
-    password : "correcthorsebatterystaple"
+    email    : data.email,
+    password : data.password
   }, function(error, userData) {
     if (error) {
       console.log("Error creating user:", error);
@@ -55,26 +60,28 @@ angular.module('starter.controllers', [])
     } else {
       console.log("Successfully created user account with uid:", userData.uid);
 
-        return "/";
+        return $state.go('app.gyms');
   
     }
   });
  
 };
 
-$scope.loginEmail = function(){
+$scope.loginEmail = function(data){
 
- 
-  var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
- 
   ref.authWithPassword({
-    email    : "bobtony@firebase.com",
-    password : "correcthorsebatterystaple"
+    email    : data.email,
+    password : data.password
   }, function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
     } else {
       console.log("Authenticated successfully with payload:");
+         $scope.isLoggedIn = function(){
+    return true;
+  };
+  $scope.isLoggedIn();
+       return $state.go('app.gyms');
    
     }
   });
@@ -87,14 +94,14 @@ $scope.loginEmail = function(){
  
 };
 
- $scope.logOut = function(user) {
+ $scope.logOut = function() {
     ref.unauth();
+    console.log(authData);
+   console.log("Login is working");
+ 
   };
 
 $scope.loginFacebook = function(){
- 
-  var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
- 
  
   if(ionic.Platform.isWebView()){
  
@@ -107,6 +114,8 @@ $scope.loginFacebook = function(){
           console.log('Firebase login failed!', error);
         } else {
           console.log('Authenticated successfully with payload:', authData);
+
+           return $state.go('app.gyms');
         }
       });
  
@@ -124,7 +133,13 @@ $scope.loginFacebook = function(){
         console.log("Authenticated successfully with payload:", authData);
         console.log("Username:" + authData.facebook.displayName);
         console.log("Profile Image:" + authData.facebook.profileImageURL);
-         return "/";
+        $scope.displayName = authData.facebook.displayName;
+         $scope.modal.hide();
+                 $scope.isLoggedIn = function(){
+    return true;
+  };
+  $scope.isLoggedIn();
+          // return $state.go('app.gyms');
       }
     });
  

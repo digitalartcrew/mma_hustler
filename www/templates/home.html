@@ -2,7 +2,7 @@
    <ion-nav-buttons side="right" ng-show="false">
       <!--   <button class="button button-icon button-clear ion-compose">
         </button> -->
-           <button class="button button-icon button-clear"> Hello, {{authData.facebook.displayName}}</button>
+           <button class="button button-icon button-clear"> Hello, {{displayName}}</button>
       </ion-nav-buttons>
       <div class="bar bar-subheader">
         <h2 class="title">Select a link to find the training you need:</h2>
@@ -13,9 +13,6 @@
 
   <ion-content class="padding has-subheader">
   <p>Welcome to MMA Hustler where you can find places to train, events, news and shop for awesome gear to ramp up your training.</p>
-
-
-
     <ion-list>
 
       <ion-item ng-repeat="gym in gyms" href="#/app/gyms/{{gym.id}}">

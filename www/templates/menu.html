@@ -18,17 +18,37 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item menu-close ng-hide="isLoggedIn()" ng-click="login()">
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/instructions">
-          Instructions
+          <ion-item menu-close ng-show="isLoggedIn()" ng-click="logOut()">
+          Logout
         </ion-item>
-      <!--   <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item> -->
-        <ion-item menu-close href="#/app/home">
-       <!--  <ion-item menu-close href="#/app/home"> -->
+       <ion-item menu-close ng-show="false" href="#/app/account"><i class="icon ion-android-settings"></i>
+          Account Settings
+        </ion-item>
+        <ion-item menu-close ng-show="isLoggedIn()" href="#/app/progress"><i class="icon ion-ios-pulse-strong"></i>
+          Progress Chart
+        </ion-item>
+        <ion-item menu-close ng-show="isLoggedIn()" href="#/app/goals"><i class="icon ion-ribbon-a"></i>
+          Goals
+        </ion-item>
+          <ion-item menu-close ng-show="isLoggedIn()" href="#/app/friends"><i class="icon ion-ios-people"></i>
+          Friends
+        </ion-item>
+          <ion-item menu-close ng-show="isLoggedIn()" href="#/app/blog"><i class="icon ion-ios-paper"></i>
+          Blog
+        </ion-item>
+          <ion-item menu-close ng-show="isLoggedIn()" href="#/app/films"><i class="icon ion-film-marker"></i>
+          Fight Films
+        </ion-item>
+          <ion-item menu-close ng-show="isLoggedIn()" href="#/app/photos"><i class="icon ion-images"></i>
+         Photos
+        </ion-item>
+           <ion-item menu-close href="#/app/instructions"><i class="icon ion-images"></i>
+         Instructions
+        </ion-item>
+        <ion-item menu-close href="#/app/home"><i class="icon ion-android-home"></i>
          Home
         </ion-item>
       </ion-list>
