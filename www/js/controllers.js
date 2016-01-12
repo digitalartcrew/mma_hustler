@@ -1,12 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state,$http) {
   $scope.data = {};
+  var authData;
+
 
   $scope.isLoggedIn = function(){
     return false;
   };
- 
+
+
+  
   var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
 
   // With the new view caching in Ionic, Controllers are only called
@@ -19,6 +23,9 @@ angular.module('starter.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
   $scope.signUpData = {};
+
+  //Form for Facebook
+   var fbData = [];
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -49,104 +56,109 @@ angular.module('starter.controllers', [])
   // };
 
   $scope.signupEmail = function(data){  
- 
-  ref.createUser({
-    email    : data.email,
-    password : data.password
-  }, function(error, userData) {
-    if (error) {
-      console.log("Error creating user:", error);
+   
+    ref.createUser({
+      email    : data.email,
+      password : data.password
+    }, function(error, userData) {
+      if (error) {
+        console.log("Error creating user:", error);
 
-    } else {
-      console.log("Successfully created user account with uid:", userData.uid);
+      } else {
+        console.log("Successfully created user account with uid:", userData.uid);
 
         return $state.go('app.gyms');
-  
-    }
-  });
- 
-};
-
-$scope.loginEmail = function(data){
-
-  ref.authWithPassword({
-    email    : data.email,
-    password : data.password
-  }, function(error, authData) {
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:");
-         $scope.isLoggedIn = function(){
-    return true;
+        
+      }
+    });
+    
   };
-  $scope.isLoggedIn();
-       return $state.go('app.gyms');
-   
-    }
-  });
+
+  $scope.loginEmail = function(data){
+
+    ref.authWithPassword({
+      email    : data.email,
+      password : data.password
+    }, function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:");
+        $scope.isLoggedIn = function(){
+          return true;
+        };
+        $scope.isLoggedIn();
+        return $state.go('app.gyms');
+        
+      }
+    });
 
      // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
- 
-};
-
- $scope.logOut = function() {
-    ref.unauth();
-    console.log(authData);
-   console.log("Login is working");
- 
+    
   };
 
-$scope.loginFacebook = function(){
- 
-  if(ionic.Platform.isWebView()){
- 
-    $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
- 
-      console.log(success);
- 
-      ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
-        if (error) {
-          console.log('Firebase login failed!', error);
-        } else {
-          console.log('Authenticated successfully with payload:', authData);
 
-           return $state.go('app.gyms');
+  $scope.loginFacebook = function(){
+   
+    if(ionic.Platform.isWebView()){
+     
+      $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
+       
+        console.log(success);
+        
+        ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
+          if (error) {
+            console.log('Firebase login failed!', error);
+          } else {
+            console.log('Authenticated successfully with payload:', authData);
+
+            return $state.go('app.gyms');
+          }
+        });
+        
+      }, function(error){
+        console.log(error);
+      });        
+      
+    }
+    else {
+     
+      ref.authWithOAuthPopup("facebook", function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          // console.log("Authenticated successfully with payload:", authData);
+          // console.log("Username:" + authData.facebook.displayName);
+          // console.log("Profile Image:" + authData.facebook.profileImageURL);
+          fbData.push(authData);
+          $scope.displayName = authData.facebook.displayName;
+          $scope.profileImageURL = authData.facebook.profileImageURL;
+          $scope.modal.hide();
+          $scope.isLoggedIn = function(){
+            return true;
+          };
+          $scope.isLoggedIn();
         }
       });
- 
-    }, function(error){
-      console.log(error);
-    });        
- 
-  }
-  else {
- 
-    ref.authWithOAuthPopup("facebook", function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } else {
-        console.log("Authenticated successfully with payload:", authData);
-        console.log("Username:" + authData.facebook.displayName);
-        console.log("Profile Image:" + authData.facebook.profileImageURL);
-        $scope.displayName = authData.facebook.displayName;
-         $scope.modal.hide();
-                 $scope.isLoggedIn = function(){
-    return true;
+      
+    }
+    
   };
-  $scope.isLoggedIn();
-          // return $state.go('app.gyms');
-      }
-    });
- 
-  }
- 
-};
-})
+
+
+  $scope.logoutFacebook = function(){
+    ref.unauth();
+       return $state.go('app.gyms');
+   
+    };
+  })
+
+
+
 
 
 .controller('GymsCtrl', function($scope) {
@@ -174,7 +186,11 @@ $scope.loginFacebook = function(){
 .controller('EventCtrl', function($scope, $stateParams) {
 })
 
-.controller('FightersCtrl', function($scope, $stateParams) {
+.controller('FightersCtrl', function($scope, $stateParams,$http) {
+
+  // var url = 'http://ufc-data-api.ufc.com/api/v3/iphone/news';
+  //     $http.get(url);
+     
 })
 
 .controller('FighterCtrl', function($scope, $stateParams) {

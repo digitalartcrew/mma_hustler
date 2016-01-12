@@ -1,24 +1,24 @@
 <ion-view view-title="MMA HUSTLER">
-   <ion-nav-buttons side="right" ng-show="false">
+<ion-nav-buttons side="right" ng-show="false">
       <!--   <button class="button button-icon button-clear ion-compose">
-        </button> -->
-           <button class="button button-icon button-clear"> Hello, {{displayName}}</button>
-      </ion-nav-buttons>
-      <div class="bar bar-subheader">
-        <h2 class="title">Select a link to find the training you need:</h2>
+    </button> -->
+    <button class="button button-icon button-clear"> Hello, {{displayName}}</button>
+  </ion-nav-buttons>
+  <div class="bar bar-subheader">
+    <h2 class="title">Select a link to find the training you need:</h2>
 
 
-      </div>
+  </div>
 
 
   <ion-content class="padding has-subheader">
   <p>Welcome to MMA Hustler where you can find places to train, events, news and shop for awesome gear to ramp up your training.</p>
-    <ion-list>
+  <ion-list>
 
-      <ion-item ng-repeat="gym in gyms" href="#/app/gyms/{{gym.id}}">
-        {{gym.title}}
-      </ion-item>
-      <div class="botnav">
+  <ion-item ng-repeat="gym in gyms" href="#/app/gyms/{{gym.id}}">
+  {{gym.title}}
+</ion-item>
+    <!--   <div class="botnav">
         <center>
       <p>
       <a href="#/app/events">
@@ -32,16 +32,22 @@
       </p>
   
   </center>
-  </div>
+</div> -->
+<div class="button-bar">
+  <a href="#/app/events" class="button"> Events</a>
+  <a href="#/app/fighters" class="button"> Fighters</a>
+  <a href="#/app/news" class="button"> News</a>
+  <a href="#/app/shop" class="button"> Shop</a>
+</div>
 
 
-    </ion-list>
-  </ion-content>
+</ion-list>
+</ion-content>
 </ion-view>
-      <ion-footer-bar class="bar-positive">
-      <div class="button-bar">
-      <button class="icon ion-social-twitter button button-clear"></button>
-      <button class="icon ion-social-facebook button button-clear"></button>
-      <button class="icon ion-social-youtube button button-clear"></button>
-      </div>
-    </ion-footer-bar>
+<ion-footer-bar class="bar-positive">
+<div class="button-bar">
+  <button class="icon ion-social-twitter button button-clear"></button>
+  <button class="icon ion-social-facebook button button-clear"></button>
+  <button class="icon ion-social-youtube button button-clear"></button>
+</div>
+</ion-footer-bar>
