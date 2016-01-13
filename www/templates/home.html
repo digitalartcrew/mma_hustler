@@ -2,7 +2,7 @@
 <ion-nav-buttons side="right" ng-show="false">
       <!--   <button class="button button-icon button-clear ion-compose">
     </button> -->
-    <button class="button button-icon button-clear"> Hello, {{displayName}}</button>
+    <button ng-show="isLoggedIn()" class="button button-icon button-clear"> Hello, {{displayName}}</button>
   </ion-nav-buttons>
   <div class="bar bar-subheader">
     <h2 class="title">Select a link to find the training you need:</h2>

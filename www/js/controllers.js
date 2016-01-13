@@ -5,10 +5,10 @@ angular.module('starter.controllers', [])
   var authData;
 
 
-  $scope.isLoggedIn = function(){
-    return false;
+  $scope.loggedIn = false;
+  $scope.isLoggedIn = function() {
+    return $scope.loggedIn;
   };
-
 
   
   var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
@@ -84,9 +84,7 @@ angular.module('starter.controllers', [])
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:");
-        $scope.isLoggedIn = function(){
-          return true;
-        };
+        $scope.isLoggedIn = true;
         $scope.isLoggedIn();
         return $state.go('app.gyms');
         
@@ -138,10 +136,8 @@ angular.module('starter.controllers', [])
           $scope.displayName = authData.facebook.displayName;
           $scope.profileImageURL = authData.facebook.profileImageURL;
           $scope.modal.hide();
-          $scope.isLoggedIn = function(){
-            return true;
-          };
-          $scope.isLoggedIn();
+          $scope.loggedIn = true;
+        
         }
       });
       
@@ -151,9 +147,11 @@ angular.module('starter.controllers', [])
 
 
   $scope.logoutFacebook = function(){
+    debugger;
     ref.unauth();
+    $scope.loggedIn = false;
+    console.log("Should be loggin out!");
        return $state.go('app.gyms');
-   
     };
   })
 
@@ -187,16 +185,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller('FightersCtrl', function($scope, $stateParams,$http) {
-
-  // var url = 'http://ufc-data-api.ufc.com/api/v3/iphone/news';
-  //     $http.get(url);
      
 })
 
 .controller('FighterCtrl', function($scope, $stateParams) {
 })
 
-.controller('NewsCtrl', function($scope, $stateParams) {
+.controller('NewsCtrl',function($scope, $stateParams,$http) {
+    
 })
 
 .controller('StoryCtrl', function($scope, $stateParams) {
@@ -252,24 +248,6 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-$scope.chats = Chats.all();
-$scope.remove = function(chat) {
-  Chats.remove(chat);
-};
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
