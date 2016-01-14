@@ -269,6 +269,16 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
       }
     }
   })
+
+  .state('app.map', {
+    url: '/map',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/map.html',
+        controller: 'MapCtrl'
+      }
+    }
+  })
   ;
 
 
