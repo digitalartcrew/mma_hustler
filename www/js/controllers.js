@@ -156,20 +156,30 @@ angular.module('starter.controllers', [])
 
 
 .controller('GymsCtrl', function($scope) {
-  $scope.gyms = [
-  { title: 'MMA', id: 1 },
-  { title: 'Boxing', id: 2 },
-  { title: 'Brazilian Jiu Jitsu', id: 3 },
-  { title: 'Fitness/Conditioning', id: 4 },
-  { title: 'Muay Thai', id: 5 },
-  { title: 'Wrestling', id: 6 }
-  ];
-})
-
-
+  })
 
 .controller('GymCtrl', function($scope, $stateParams) {
 })
+
+.controller('YogaCtrl', function($scope, $stateParams) {
+})
+
+.controller('mmaCtrl', function($scope, $stateParams) {
+})
+
+.controller('WrestlingCtrl', function($scope, $stateParams) {
+})
+
+.controller('BjjCtrl', function($scope, $stateParams) {
+})
+
+.controller('BoxingCtrl', function($scope, $stateParams) {
+})
+
+.controller('AcCtrl', function($scope, $stateParams) {
+})
+
+
 
 .controller('HomeCtrl', function($scope, $stateParams) {
 })

@@ -43,12 +43,62 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     }
   })
 
-  .state('app.singlegym', {
-    url: '/gyms/:gymId',
+    .state('app.mma', {
+    url: '/mma',
     views: {
       'menuContent': {
-        templateUrl: 'templates/gyms.html',
-        controller: 'GymCtrl'
+        templateUrl: 'templates/mma.html',
+        controller: 'mmaCtrl'
+      }
+    }
+  })
+
+  .state('app.ac', {
+    url: '/ac',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/ac.html',
+        controller: 'AcCtrl'
+      }
+    }
+  })
+
+  .state('app.boxing', {
+    url: '/boxing',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/boxing.html',
+        controller: 'BoxingCtrl'
+      }
+    }
+  })
+
+  .state('app.bjj', {
+    url: '/bjj',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/bjj.html',
+        controller: 'BjjCtrl'
+      }
+    }
+  })
+
+  .state('app.wrestling', {
+    url: '/wrestling',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/wrestling.html',
+        controller: 'WrestlingCtrl'
+      }
+    }
+  })
+
+  .state('app.yoga', {
+    url: '/yoga',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/yoga.html',
+        controller: 'YogaCtrl'
       }
     }
   })
@@ -210,7 +260,7 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     }
   })
 
-    .state('app.signup', {
+  .state('app.signup', {
     url: '/signup',
     views: {
       'menuContent': {
@@ -219,14 +269,7 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
       }
     }
   })
-
   ;
-
-
-
-
-
-  
 
 
   // if none of the above states are matched, use this as the fallback
