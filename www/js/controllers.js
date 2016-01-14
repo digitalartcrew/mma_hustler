@@ -174,21 +174,27 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
 
-.controller('EventsCtrl', function($scope, $stateParams) {
+.controller('EventsCtrl', function($scope, $stateParams,mmaService) {
+   mmaService.events().then(function(res){
+    $scope.eventResults = res.data;
+  });
 })
 
 .controller('EventCtrl', function($scope, $stateParams) {
 })
 
-.controller('FightersCtrl', function($scope, $stateParams,$http) {
+.controller('FightersCtrl', function($scope, $stateParams,$http, mmaService) {
+   mmaService.fighters().then(function(res){
+    $scope.fighterResults = res.data;
+  });
      
 })
 
 .controller('FighterCtrl', function($scope, $stateParams) {
 })
 
-.controller('NewsCtrl',function($scope, $stateParams,$http, newsService) {
-  newsService.news().then(function(res){
+.controller('NewsCtrl',function($scope, $stateParams,$http, mmaService) {
+  mmaService.news().then(function(res){
     $scope.newsResults = res.data;
   });
 })
