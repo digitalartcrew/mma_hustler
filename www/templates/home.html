@@ -1,39 +1,26 @@
 <ion-view view-title="MMA HUSTLER">
 <ion-nav-buttons side="right" ng-show="false">
-      <!--   <button class="button button-icon button-clear ion-compose">
-    </button> -->
-    <button ng-show="isLoggedIn()" class="button button-icon button-clear"> Hello, {{displayName}}</button>
-  </ion-nav-buttons>
-  <div class="bar bar-subheader">
-    <h2 class="title">Select a link to find the training you need:</h2>
-
-
-  </div>
-
-
-  <ion-content class="padding has-subheader">
-  <p>Welcome to MMA Hustler where you can find places to train, events, news and shop for awesome gear to ramp up your training.</p>
-  <ion-list>
-
- <!--  <ion-item ng-repeat="gym in gyms" href="#/app/gyms/{{gym.fromtemplateurl}}">
-  {{gym.title}}
-</ion-item> -->
+<button ng-show="isLoggedIn()" class="button button-icon button-clear"> Hello, {{displayName}}</button>
+</ion-nav-buttons>
+<div class="bar bar-subheader">
+  <h2 class="title">Select a link to find the training you need:</h2>
+</div>
+<ion-content class="padding has-subheader">
+<p>Welcome to MMA Hustler where you can find places to train, events, news and shop for awesome gear to ramp up your training.</p>
+<ion-list>
 <ion-item href="#/app/ac">Athletic Conditioning</ion-item>
 <ion-item href="#/app/boxing">Boxing</ion-item>
 <ion-item href="#/app/bjj">Brazilian Jiu Jitsu</ion-item>
 <ion-item href="#/app/mma">MMA</ion-item>
 <ion-item href="#/app/wrestling">Wrestling</ion-item>
 <ion-item href="#/app/yoga">Yoga</ion-item>
-
+</ion-list>
 <div class="button-bar">
   <a href="#/app/events" class="button"> Events</a>
   <a href="#/app/fighters" class="button"> Fighters</a>
   <a href="#/app/news" class="button"> News</a>
   <a href="#/app/shop" class="button"> Shop</a>
 </div>
-
-
-</ion-list>
 </ion-content>
 </ion-view>
 <ion-footer-bar class="bar-positive">

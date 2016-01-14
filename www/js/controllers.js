@@ -176,10 +176,39 @@ angular.module('starter.controllers', [])
 .controller('BoxingCtrl', function($scope, $stateParams) {
 })
 
-.controller('AcCtrl', function($scope, $stateParams) {
-})
+.controller('AcCtrl', function($scope, $stateParams,$ionicLoading, $compile) {
+  
+  
+
+      //   $scope.map = map;
+    
+      // google.maps.event.addDomListener(window, 'load', initialize);
+      
+      // $scope.centerOnMe = function() {
+      //   if(!$scope.map) {
+      //     return;
+      //   }
+
+      //   $scope.loading = $ionicLoading.show({
+      //     content: 'Getting current location...',
+      //     showBackdrop: false
+      //   });
+
+      //   navigator.geolocation.getCurrentPosition(function(pos) {
+      //     $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+      //     $scope.loading.hide();
+      //   }, function(error) {
+      //     alert('Unable to get location: ' + error.message);
+      //   });
+      // };
+      
+      // $scope.clickTest = function() {
+      //   alert('Example of infowindow with ng-click');
+      // };
 
 
+      })
+      
 
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
