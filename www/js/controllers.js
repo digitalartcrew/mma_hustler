@@ -222,7 +222,11 @@ angular.module('starter.controllers', [])
 
 .controller('InstructionsCtrl', function($scope) {})
 
-.controller('PhotosCtrl', function($scope) {})
+.controller('MediaCtrl', function($scope, $stateParams,$http, mmaService) {
+   mmaService.media().then(function(res){
+    $scope.mediaResults = res.data;
+  });
+})
 
 
 

@@ -200,12 +200,12 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     }
   })
 
-  .state('app.photos', {
-    url: '/photos',
+  .state('app.media', {
+    url: '/media',
     views: {
       'menuContent': {
-        templateUrl: 'templates/photos.html',
-        controller: 'PhotosCtrl'
+        templateUrl: 'templates/media.html',
+        controller: 'MediaCtrl'
       }
     }
   })

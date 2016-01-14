@@ -37,6 +37,15 @@ app.get('/events', function(req,res){
 	});
 });
 
+app.get('/media', function(req,res){
+	request(url+'media', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	});
+});
+
+
+
 
 
 app.listen(3001,function(req,res){

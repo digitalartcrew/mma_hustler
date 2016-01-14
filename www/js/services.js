@@ -8,6 +8,9 @@ app.factory('mmaService', function($http, $q) {
 		},
 		 events: function(){
 		  return $http.get('http://localhost:3001/events');
+		},
+		media: function(){
+		  return $http.get('http://localhost:3001/media');
 		}
 	};
 
