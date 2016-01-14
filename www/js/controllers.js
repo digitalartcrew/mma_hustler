@@ -129,9 +129,6 @@ angular.module('starter.controllers', [])
         if (error) {
           console.log("Login Failed!", error);
         } else {
-          // console.log("Authenticated successfully with payload:", authData);
-          // console.log("Username:" + authData.facebook.displayName);
-          // console.log("Profile Image:" + authData.facebook.profileImageURL);
           fbData.push(authData);
           $scope.displayName = authData.facebook.displayName;
           $scope.profileImageURL = authData.facebook.profileImageURL;
@@ -147,7 +144,6 @@ angular.module('starter.controllers', [])
 
 
   $scope.logoutFacebook = function(){
-    debugger;
     ref.unauth();
     $scope.loggedIn = false;
     console.log("Should be loggin out!");
@@ -191,8 +187,10 @@ angular.module('starter.controllers', [])
 .controller('FighterCtrl', function($scope, $stateParams) {
 })
 
-.controller('NewsCtrl',function($scope, $stateParams,$http) {
-    
+.controller('NewsCtrl',function($scope, $stateParams,$http, newsService) {
+  newsService.news().then(function(res){
+    $scope.newsResults = res.data;
+  });
 })
 
 .controller('StoryCtrl', function($scope, $stateParams) {
