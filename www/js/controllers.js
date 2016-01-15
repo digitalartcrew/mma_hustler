@@ -158,30 +158,6 @@ angular.module('starter.controllers', [])
 .controller('GymsCtrl', function($scope) {
 })
 
-.controller('GymCtrl', function($scope, $stateParams) {
-})
-
-.controller('YogaCtrl', function($scope, $stateParams) {
-})
-
-.controller('mmaCtrl', function($scope, $stateParams) {
-})
-
-.controller('WrestlingCtrl', function($scope, $stateParams) {
-})
-
-.controller('BjjCtrl', function($scope, $stateParams) {
-})
-
-.controller('BoxingCtrl', function($scope, $stateParams) {
-})
-
-.controller('AcCtrl', function($scope, $stateParams,$ionicLoading, $compile) {
-
-
-
-})
-
 
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
@@ -330,6 +306,42 @@ angular.module('starter.controllers', [])
 });
 })
 
+//Fitness Controllers
+.controller('BoxingCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.boxing().then(function(res){
+  $scope.boxingResults = res.data;
+});
+})
+
+.controller('BjjCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.bjj().then(function(res){
+  $scope.bjjResults = res.data;
+});
+})
+
+.controller('MmaCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.mma().then(function(res){
+  $scope.mmaResults = res.data;
+});
+})
+
+.controller('YogaCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.yoga().then(function(res){
+  $scope.yogaResults = res.data;
+});
+})
+
+.controller('WrestlingCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.wrestling().then(function(res){
+  $scope.wrestlingResults = res.data;
+});
+})
+
+.controller('FitnessCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.fitness().then(function(res){
+  $scope.fitnessResults = res.data;
+});
+})
 
 
 .controller('DashCtrl', function($scope) {

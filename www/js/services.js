@@ -9,9 +9,27 @@ app.factory('mmaService', function($http, $q) {
 		 events: function(){
 		  return $http.get('http://localhost:3001/events');
 		},
-		media: function(){
-		  return $http.get('http://localhost:3001/media');
-		}
+		boxing: function(){
+		  return $http.get('http://localhost:3001/boxing');
+		},
+		mma: function(){
+		  return $http.get('http://localhost:3001/mma');
+		},
+		bjj: function(){
+		  return $http.get('http://localhost:3001/bjj');
+		},
+		muaythai: function(){
+		  return $http.get('http://localhost:3001/muaythai');
+		},
+		yoga: function(){
+		  return $http.get('http://localhost:3001/yoga');
+		},
+		fitness: function(){
+		  return $http.get('http://localhost:3001/fitness');
+		},
+		wrestling: function(){
+		  return $http.get('http://localhost:3001/wrestling');
+		},
 	};
 
 });

@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 var mongoose = require('mongoose'),
 express = require('express'),
 request = require('request'),
@@ -8,7 +6,6 @@ app = express(),
 bodyParser = require("body-parser"),
 methodOverride = require('method-override'),
 morgan = require('morgan');
-
 
 
 app.use(morgan('combined'));
@@ -48,10 +45,51 @@ app.get('/media', function(req,res){
 });
 
 app.get('/mma', function(req,res){
-	request('https://api.foursquare.com/v2/venues/search?client_id='+process.env.FS_CLIENTID+'&+client_secret='+process.env.FS_CLIENTSECRET+'&ll=40.7,-74&query=mma', function(error, response, body) {
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=mma', function(error, response, body) {
 	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
 	  res.status(200).json(body);
-	  console.log(body);
+	});
+});
+
+app.get('/boxing', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=boxing', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	});
+});
+
+app.get('/bjj', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=bjj', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	});
+});
+
+app.get('/muaythai', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=muayt&hai', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	});
+});
+
+app.get('/wrestling', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=wrestling', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	});
+});
+
+app.get('/yoga', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=yoga', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	});
+});
+
+app.get('/fitness', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id=RGC3MQYZPNGOUZD0JTIF2VKTFSQPVSUNTIKF0ABNOVDFROEL&client_secret=KHBEGUSORT1T21WRFCW4EFUXJLVUTRMENZ4RMJ3EPMW3BUKR&v=20130815&ll=40.7,-74&query=fitness&gym', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
 	});
 });
 

@@ -48,17 +48,17 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     views: {
       'menuContent': {
         templateUrl: 'templates/mma.html',
-        controller: 'mmaCtrl'
+        controller: 'MmaCtrl'
       }
     }
   })
 
-  .state('app.ac', {
-    url: '/ac',
+  .state('app.fitness', {
+    url: '/fitness',
     views: {
       'menuContent': {
-        templateUrl: 'templates/ac.html',
-        controller: 'AcCtrl'
+        templateUrl: 'templates/fitness.html',
+        controller: 'FitnessCtrl'
       }
     }
   })
