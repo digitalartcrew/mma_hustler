@@ -1,3 +1,5 @@
+require('dotenv').load();
+
 var mongoose = require('mongoose'),
 express = require('express'),
 request = require('request'),
@@ -7,7 +9,8 @@ bodyParser = require("body-parser"),
 methodOverride = require('method-override'),
 morgan = require('morgan');
 
-app.set('view engine', 'ejs');
+
+
 app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true})); 
@@ -44,6 +47,13 @@ app.get('/media', function(req,res){
 	});
 });
 
+app.get('/mma', function(req,res){
+	request('https://api.foursquare.com/v2/venues/search?client_id='+process.env.FS_CLIENTID+'&+client_secret='+process.env.FS_CLIENTSECRET+'&ll=40.7,-74&query=mma', function(error, response, body) {
+	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
+	  res.status(200).json(body);
+	  console.log(body);
+	});
+});
 
 
 

@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
   $scope.signUpData = {};
 
   //Form for Facebook
-   var fbData = [];
+  var fbData = [];
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -56,7 +56,7 @@ angular.module('starter.controllers', [])
   // };
 
   $scope.signupEmail = function(data){  
-   
+
     ref.createUser({
       email    : data.email,
       password : data.password
@@ -101,11 +101,11 @@ angular.module('starter.controllers', [])
 
 
   $scope.loginFacebook = function(){
-   
+
     if(ionic.Platform.isWebView()){
-     
+
       $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
-       
+
         console.log(success);
         
         ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
@@ -124,7 +124,7 @@ angular.module('starter.controllers', [])
       
     }
     else {
-     
+
       ref.authWithOAuthPopup("facebook", function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
@@ -134,7 +134,7 @@ angular.module('starter.controllers', [])
           $scope.profileImageURL = authData.facebook.profileImageURL;
           $scope.modal.hide();
           $scope.loggedIn = true;
-        
+
         }
       });
       
@@ -147,16 +147,16 @@ angular.module('starter.controllers', [])
     ref.unauth();
     $scope.loggedIn = false;
     console.log("Should be loggin out!");
-       return $state.go('app.gyms');
-    };
-  })
+    return $state.go('app.gyms');
+  };
+})
 
 
 
 
 
 .controller('GymsCtrl', function($scope) {
-  })
+})
 
 .controller('GymCtrl', function($scope, $stateParams) {
 })
@@ -177,46 +177,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AcCtrl', function($scope, $stateParams,$ionicLoading, $compile) {
-  
-  
-
-      //   $scope.map = map;
-    
-      // google.maps.event.addDomListener(window, 'load', initialize);
-      
-      // $scope.centerOnMe = function() {
-      //   if(!$scope.map) {
-      //     return;
-      //   }
-
-      //   $scope.loading = $ionicLoading.show({
-      //     content: 'Getting current location...',
-      //     showBackdrop: false
-      //   });
-
-      //   navigator.geolocation.getCurrentPosition(function(pos) {
-      //     $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-      //     $scope.loading.hide();
-      //   }, function(error) {
-      //     alert('Unable to get location: ' + error.message);
-      //   });
-      // };
-      
-      // $scope.clickTest = function() {
-      //   alert('Example of infowindow with ng-click');
-      // };
 
 
-      })
-      
+
+})
+
 
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
 
 .controller('EventsCtrl', function($scope, $stateParams,mmaService) {
-   mmaService.events().then(function(res){
-    $scope.eventResults = res.data;
-  });
+ mmaService.events().then(function(res){
+  $scope.eventResults = res.data;
+});
 })
 
 .controller('EventCtrl', function($scope, $stateParams) {
@@ -225,53 +198,98 @@ angular.module('starter.controllers', [])
 .controller('MapCtrl', function($scope, $stateParams,$cordovaGeolocation) {
 
 
-  var options = {timeout: 10000, enableHighAccuracy: true};
- 
-  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
- 
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
- 
-    var mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
- 
-    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//   var options = {timeout: 10000, enableHighAccuracy: true};
 
-    //Wait until the map is loaded
-google.maps.event.addListenerOnce($scope.map, 'idle', function(){
- 
-  var marker = new google.maps.Marker({
-      map: $scope.map,
-      animation: google.maps.Animation.DROP,
-      position: latLng
-  });      
- 
-  var infoWindow = new google.maps.InfoWindow({
-      content: "Here I am!"
-  });
- 
-  google.maps.event.addListener(marker, 'click', function () {
-      infoWindow.open($scope.map, marker);
-  });
- 
-});
+//   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+//       var latitude = position.coords.latitude;
+//         var longitude = position.coords.longitude;
+//         var geolocpoint = new google.maps.LatLng(latitude, longitude);
 
-    
+//     var map = new google.maps.Map(document.getElementById('map'), {
+//       center: geolocpoint,
+//       zoom: 13
+//     });
+//     var input = /** @type {!HTMLInputElement} */(
+//       document.getElementById('pac-input'));
 
-  }, function(error){
-    console.log("Could not get location");
-  });
+//     var types = document.getElementById('type-selector');
+//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
+//     var autocomplete = new google.maps.places.Autocomplete(input,{ types: ['(cities)'], componentRestrictions : { country: 'usa' }});
+//     autocomplete.bindTo('bounds', map);
+
+//     var infowindow = new google.maps.InfoWindow();
+//     var marker = new google.maps.Marker({
+//       map: map,
+//       anchorPoint: new google.maps.Point(0, -29)
+//     });
+
+//     autocomplete.addListener('place_changed', function() {
+//       infowindow.close();
+//       marker.setVisible(false);
+//       var place = autocomplete.getPlace();
+//       if (!place.geometry) {
+//         window.alert("Autocomplete's returned place contains no geometry");
+//         return;
+//       }
+
+//     // If the place has a geometry, then present it on a map.
+//     if (place.geometry.viewport) {
+//       map.fitBounds(place.geometry.viewport);
+//     } else {
+//       map.setCenter(place.geometry.location);
+//       map.setZoom(17);  // Why 17? Because it looks good.
+//     }
+//     marker.setIcon(/** @type {google.maps.Icon} */({
+//       url: place.icon,
+//       size: new google.maps.Size(71, 71),
+//       origin: new google.maps.Point(0, 0),
+//       anchor: new google.maps.Point(17, 34),
+//       scaledSize: new google.maps.Size(35, 35)
+//     }));
+//     marker.setPosition(place.geometry.location);
+//     marker.setVisible(true);
+
+//     var address = '';
+//     if (place.address_components) {
+//       address = [
+//       (place.address_components[0] && place.address_components[0].short_name || ''),
+//       (place.address_components[1] && place.address_components[1].short_name || ''),
+//       (place.address_components[2] && place.address_components[2].short_name || '')
+//       ].join(' ');
+//     }
+
+//     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+//     infowindow.open(map, marker);
+//   });
+
+//   // Sets a listener on a radio button to change the filter type on Places
+//   // Autocomplete.
+//   function setupClickListener(id, types) {
+//     var radioButton = document.getElementById(id);
+//     radioButton.addEventListener('click', function() {
+//       autocomplete.setTypes(types);
+//     });
+//   }
+
+//   setupClickListener('changetype-all', []);
+//   setupClickListener('changetype-address', ['address']);
+//   setupClickListener('changetype-establishment', ['establishment']);
+//   setupClickListener('changetype-geocode', ['geocode']);
+// });
+
+
+// }, function(error){
+//   console.log("Could not get location");
 
 })
 
 .controller('FightersCtrl', function($scope, $stateParams,$http, mmaService) {
-   mmaService.fighters().then(function(res){
-    $scope.fighterResults = res.data;
-  });
-     
+ mmaService.fighters().then(function(res){
+  $scope.fighterResults = res.data;
+});
+
 })
 
 .controller('FighterCtrl', function($scope, $stateParams) {
@@ -307,9 +325,9 @@ google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 .controller('InstructionsCtrl', function($scope) {})
 
 .controller('MediaCtrl', function($scope, $stateParams,$http, mmaService) {
-   mmaService.media().then(function(res){
-    $scope.mediaResults = res.data;
-  });
+ mmaService.media().then(function(res){
+  $scope.mediaResults = res.data;
+});
 })
 
 
