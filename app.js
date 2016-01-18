@@ -48,9 +48,6 @@ app.get('/media', function(req,res){
 	});
 });
 
-//UFC API Ends Here
-
-
 //Foursquare API Starts Here
 app.get('/mma', function(req,res){
 	request(fs_api+'mma', function(error, response, body) {
@@ -100,8 +97,6 @@ app.get('/fitness', function(req,res){
 	  res.status(200).json(body);
 	});
 });
-
-
 
 
 app.listen(3001,function(req,res){

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['youtube-embed'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state,$http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state,$http,$firebaseAuth) {
   $scope.data = {};
   var authData;
 
@@ -55,100 +55,87 @@ angular.module('starter.controllers', ['youtube-embed'])
   //   }, 1000);
   // };
 
-  $scope.signupEmail = function(data){  
-
-    ref.createUser({
-      email    : data.email,
-      password : data.password
-    }, function(error, userData) {
-      if (error) {
-        console.log("Error creating user:", error);
-
-      } else {
-        console.log("Successfully created user account with uid:", userData.uid);
-
-        return $state.go('app.gyms');
-        
-      }
+  $scope.signupEmail = function(username,password){  
+   var refAuth = $firebaseAuth(ref);
+   refAuth.$createUser({email: username, password: password}).then(function() {
+    return refAuth.$authWithPassword({
+      email: username,
+      password: password
     });
-    
-  };
+  }).then(function(authData) {
+    console.log("Success!");
+    return $state.go('app.gyms');
+  }).catch(function(error) {
+    console.error("ERROR " + error);
+  });  
+};
 
-  $scope.loginEmail = function(data){
+$scope.loginEmail = function(username, password){
+  var refAuth = $firebaseAuth(ref);
+  refAuth.$authWithPassword({
+    email: username,
+    password: password
+  }).then(function(authData) {
+   return $state.go('app.gyms');
+ }).catch(function(error) {
+  console.error("ERROR: " + error);
+});
+ $timeout(function() {
+  $scope.closeLogin();
+}, 1000);
 
-    ref.authWithPassword({
-      email    : data.email,
-      password : data.password
-    }, function(error, authData) {
+};
+
+
+$scope.loginFacebook = function(){
+
+  if(ionic.Platform.isWebView()){
+
+    $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
+
+      console.log(success);
+
+      ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
+        if (error) {
+          console.log('Firebase login failed!', error);
+        } else {
+          console.log('Authenticated successfully with payload:', authData);
+
+          return $state.go('app.gyms');
+        }
+      });
+
+    }, function(error){
+      console.log(error);
+    });        
+
+  }
+  else {
+
+    ref.authWithOAuthPopup("facebook", function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        console.log("Authenticated successfully with payload:");
-        $scope.isLoggedIn = true;
-        $scope.isLoggedIn();
-        return $state.go('app.gyms');
-        
+        fbData.push(authData);
+        $scope.displayName = authData.facebook.displayName;
+        $scope.profileImageURL = authData.facebook.profileImageURL;
+        $scope.modal.hide();
+        $scope.loggedIn = true;
+
       }
     });
 
-     // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-    
-  };
+  }
+
+};
 
 
-  $scope.loginFacebook = function(){
-
-    if(ionic.Platform.isWebView()){
-
-      $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
-
-        console.log(success);
-        
-        ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
-          if (error) {
-            console.log('Firebase login failed!', error);
-          } else {
-            console.log('Authenticated successfully with payload:', authData);
-
-            return $state.go('app.gyms');
-          }
-        });
-        
-      }, function(error){
-        console.log(error);
-      });        
-      
-    }
-    else {
-
-      ref.authWithOAuthPopup("facebook", function(error, authData) {
-        if (error) {
-          console.log("Login Failed!", error);
-        } else {
-          fbData.push(authData);
-          $scope.displayName = authData.facebook.displayName;
-          $scope.profileImageURL = authData.facebook.profileImageURL;
-          $scope.modal.hide();
-          $scope.loggedIn = true;
-
-        }
-      });
-      
-    }
-    
-  };
-
-
-  $scope.logoutFacebook = function(){
-    ref.unauth();
-    $scope.loggedIn = false;
-    console.log("Should be loggin out!");
-    return $state.go('app.gyms');
-  };
+$scope.logoutFacebook = function(){
+  ref.unauth();
+  $scope.loggedIn = false;
+  console.log("Should be loggin out!");
+  return $state.go('app.gyms');
+};
 })
 
 .controller('GymsCtrl', function($scope) {
@@ -160,7 +147,9 @@ angular.module('starter.controllers', ['youtube-embed'])
 
 .controller('EventsCtrl', function($scope, $stateParams,mmaService) {
  mmaService.events().then(function(res){
-  $scope.eventResults = res.data;
+  var eventData = JSON.parse(res.data);
+  $scope.eventResults = eventData;
+   console.log(eventData);
 });
 })
 
@@ -169,7 +158,9 @@ angular.module('starter.controllers', ['youtube-embed'])
 
 .controller('FightersCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.fighters().then(function(res){
-  $scope.fighterResults = res.data;
+  var fighterData = JSON.parse(res.data);
+  $scope.fighterResults = fighterData;
+   console.log(fighterData);
 });
 
 })
@@ -178,8 +169,10 @@ angular.module('starter.controllers', ['youtube-embed'])
 })
 
 .controller('NewsCtrl',function($scope, $stateParams,$http, mmaService) {
-  mmaService.news().then(function(res){
-    $scope.newsResults = res.data;
+ mmaService.news().then(function(res){
+  var newsData = JSON.parse(res.data);
+  $scope.newsResults = newsData;
+   console.log(newsData);
   });
 })
 
@@ -193,10 +186,9 @@ angular.module('starter.controllers', ['youtube-embed'])
 .controller('GoalsCtrl', function($scope) {})
 
 .controller('FilmsCtrl', function($scope,$http) {
-   
-   $scope.video1 = ['6hK14hRi4Vs'];
-   $scope.video2 = ['mpw9ppSDOZY'];
-   $scope.video3 = ['9Y-KnFSVTT4'];
+ $scope.video1 = ['6hK14hRi4Vs'];
+ $scope.video2 = ['mpw9ppSDOZY'];
+ $scope.video3 = ['9Y-KnFSVTT4'];
 })
 
 .controller('BlogCtrl', function($scope) {})
@@ -213,44 +205,66 @@ angular.module('starter.controllers', ['youtube-embed'])
 
 .controller('MediaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.media().then(function(res){
-  $scope.mediaResults = res.data;
+  var mediaData = JSON.parse(res.data);
+  $scope.mediaResults = mediaData;
+   console.log(mediaData);
 });
 })
 
 //Fitness Controllers
 .controller('BoxingCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.boxing().then(function(res){
-  $scope.boxingResults = res.data;
+  var boxingData = JSON.parse(res.data);
+  $scope.boxingResults = boxingData;
+   console.log(boxingData);
 });
 })
 
 .controller('BjjCtrl', function($scope, $stateParams,$http, mmaService) {
- mmaService.bjj().then(function(res){
-  $scope.bjjResults = res.data;
+mmaService.bjj().then(function(res){
+  var bjjData = JSON.parse(res.data);
+  $scope.bjjResults = bjjData;
+   console.log(bjjData);
 });
 })
 
 .controller('MmaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.mma().then(function(res){
-  $scope.mmaResults = res.data;
+  var mmaData = JSON.parse(res.data);
+  $scope.mmaResults = mmaData;
+   console.log(mmaData);
+});
+})
+
+.controller('MuaythaiCtrl', function($scope, $stateParams,$http, mmaService) {
+ mmaService.muaythai().then(function(res){
+  var muaythaiData = JSON.parse(res.data);
+  $scope.muaythaiResults = muaythaiData;
+   console.log(muaythaiData);
 });
 })
 
 .controller('YogaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.yoga().then(function(res){
-  $scope.yogaResults = res.data;
+  var yogaData = JSON.parse(res.data);
+  $scope.yogaResults = yogaData;
+   console.log(yogaData);
 });
 })
 
 .controller('WrestlingCtrl', function($scope, $stateParams,$http, mmaService) {
- mmaService.wrestling().then(function(res){
-  $scope.wrestlingResults = res.data;
+  mmaService.wrestling().then(function(res){
+  var wrestlingData = JSON.parse(res.data);
+  $scope.wrestlingResults = wrestlingData;
+   console.log(wrestlingData);
 });
 })
 
 .controller('FitnessCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.fitness().then(function(res){
-  $scope.fitnessResults = res.data;
+  var fitnessData = JSON.parse(res.data);
+  $scope.fitnessResults = fitnessData;
+   console.log(fitnessData);
 });
 })
 

@@ -93,6 +93,16 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     }
   })
 
+    .state('app.muaythai', {
+    url: '/muaythai',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/muaythai.html',
+        controller: 'MuaythaiCtrl'
+      }
+    }
+  })
+
   .state('app.yoga', {
     url: '/yoga',
     views: {
