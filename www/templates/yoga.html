@@ -1,6 +1,20 @@
 <ion-view view-title="Yoga">
-  <ion-content>
-    <h1>Yoga</h1>
-    {{yogaResults}}
-  </ion-content>
+<ion-content>
+	<h1>Yoga</h1>
+<ion-list>
+   <ion-item ng-repeat="yoga in yogaResults">
+      <div>
+        <p>{{yoga.name}}</p>
+        <p>{{yoga.contact.formmattedPhone}}</p>
+        <p>{{yoga.contact.twitter}}</p>
+        <p>{{yoga.location.city}}</p>
+        <p>{{yoga.location.state}}</p>
+        <p>{{yoga.url}}</p>
+        </div>
+      </ion-item>
+</ion-list>
+</ion-content>
 </ion-view>
+<ion-footer-bar class="bar-dark">
+</ion-footer-bar>
+

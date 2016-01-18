@@ -1,6 +1,20 @@
 <ion-view view-title="Boxing">
-  <ion-content>
-    <h1>Boxing</h1>
-    {{boxingResults}}
-  </ion-content>
+<ion-content>
+	<h1>Boxing</h1>
+<ion-list>
+   <ion-item ng-repeat="boxing in boxingResults">
+      <div>
+        <p>{{boxing.name}}</p>
+        <p>{{boxing.contact.formmattedPhone}}</p>
+        <p>{{boxing.contact.twitter}}</p>
+        <p>{{boxing.location.city}}</p>
+        <p>{{boxing.location.state}}</p>
+        <p>{{boxing.url}}</p>
+        </div>
+      </ion-item>
+</ion-list>
+</ion-content>
 </ion-view>
+<ion-footer-bar class="bar-dark">
+</ion-footer-bar>
+

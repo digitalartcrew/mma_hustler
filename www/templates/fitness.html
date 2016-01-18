@@ -1,11 +1,20 @@
 <ion-view view-title="Fitness">
 <ion-content>
-<h1>Fitness</h1>
-{{fitnessResults}}
-
+	<h1>Fitness</h1>
+<ion-list>
+   <ion-item ng-repeat="fitness in fitnessResults">
+      <div>
+        <p>{{fitness.name}}</p>
+        <p>{{fitness.contact.formmattedPhone}}</p>
+        <p>{{fitness.contact.twitter}}</p>
+        <p>{{fitness.location.city}}</p>
+        <p>{{fitness.location.state}}</p>
+        <p>{{fitness.url}}</p>
+        </div>
+      </ion-item>
+</ion-list>
 </ion-content>
 </ion-view>
 <ion-footer-bar class="bar-dark">
-<!-- <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a> -->
 </ion-footer-bar>
 

@@ -205,7 +205,7 @@ $scope.logoutFacebook = function(){
 
 .controller('MediaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.media().then(function(res){
-  var mediaData = JSON.parse(res.data);
+  var mediaData = JSON.parse(res.data).response.venues;
   $scope.mediaResults = mediaData;
    console.log(mediaData);
 });
@@ -214,7 +214,7 @@ $scope.logoutFacebook = function(){
 //Fitness Controllers
 .controller('BoxingCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.boxing().then(function(res){
-  var boxingData = JSON.parse(res.data);
+  var boxingData = JSON.parse(res.data).response.venues;
   $scope.boxingResults = boxingData;
    console.log(boxingData);
 });
@@ -222,7 +222,7 @@ $scope.logoutFacebook = function(){
 
 .controller('BjjCtrl', function($scope, $stateParams,$http, mmaService) {
 mmaService.bjj().then(function(res){
-  var bjjData = JSON.parse(res.data);
+  var bjjData = JSON.parse(res.data).response.venues;
   $scope.bjjResults = bjjData;
    console.log(bjjData);
 });
@@ -230,7 +230,7 @@ mmaService.bjj().then(function(res){
 
 .controller('MmaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.mma().then(function(res){
-  var mmaData = JSON.parse(res.data);
+  var mmaData = JSON.parse(res.data).response.venues;
   $scope.mmaResults = mmaData;
    console.log(mmaData);
 });
@@ -238,7 +238,7 @@ mmaService.bjj().then(function(res){
 
 .controller('MuaythaiCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.muaythai().then(function(res){
-  var muaythaiData = JSON.parse(res.data);
+  var muaythaiData = JSON.parse(res.data).response.venues;
   $scope.muaythaiResults = muaythaiData;
    console.log(muaythaiData);
 });
@@ -246,7 +246,7 @@ mmaService.bjj().then(function(res){
 
 .controller('YogaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.yoga().then(function(res){
-  var yogaData = JSON.parse(res.data);
+  var yogaData = JSON.parse(res.data).response.venues;
   $scope.yogaResults = yogaData;
    console.log(yogaData);
 });
@@ -254,7 +254,7 @@ mmaService.bjj().then(function(res){
 
 .controller('WrestlingCtrl', function($scope, $stateParams,$http, mmaService) {
   mmaService.wrestling().then(function(res){
-  var wrestlingData = JSON.parse(res.data);
+  var wrestlingData = JSON.parse(res.data).response.venues;
   $scope.wrestlingResults = wrestlingData;
    console.log(wrestlingData);
 });
@@ -262,7 +262,7 @@ mmaService.bjj().then(function(res){
 
 .controller('FitnessCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.fitness().then(function(res){
-  var fitnessData = JSON.parse(res.data);
+  var fitnessData = JSON.parse(res.data).response.venues;
   $scope.fitnessResults = fitnessData;
    console.log(fitnessData);
 });
