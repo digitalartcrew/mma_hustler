@@ -1,6 +1,22 @@
 <ion-view view-title="Events">
   <ion-content>
-    <h1>Events</h1>
-    {{eventResults}}
+    <ion-list>
+    <ion-item ng-repeat="keeper in keeperObj track by $index">
+    <p><img width="100%" src="{{keeper[5]}}"></p>
+    <p>{{keeper[1]}}</p>
+    <p>{{keeper[7]}}</p>
+    <p>{{keeper[0]}}</p>
+    <p>{{keeper[2]}}</p>
+    <p>{{keeper[3]}}</p>
+    <p>{{keeper[4]}}</p>
+    <p><a class="button" href="{{keeper[6]}}">Buy Tickets</a></p>
+    </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
+
+
+
+
+
+

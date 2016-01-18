@@ -147,9 +147,15 @@ $scope.logoutFacebook = function(){
 
 .controller('EventsCtrl', function($scope, $stateParams,mmaService) {
  mmaService.events().then(function(res){
+ keeperObj = [];
+ $scope.keeperObj = keeperObj;
   var eventData = JSON.parse(res.data);
   $scope.eventResults = eventData;
-   console.log(eventData);
+
+  eventData.forEach(function(key,value){
+    keeperObj.push([key.arena,key.base_title,key.location,key.event_date,key.event_time,key.feature_image,key.ticketurl,key.title_tag_line]);
+  });
+   console.log("KEEPER", keeperObj);
 });
 })
 
