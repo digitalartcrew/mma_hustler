@@ -21,7 +21,7 @@ var fs_api ='https://api.foursquare.com/v2/venues/search?client_id='+process.env
 
 //UFC API Starts Here
 app.get('/news', function(req,res){
-	request(url+'news', function(error, response, body) {
+	request('http://espn.go.com/mma/story/_/id/13402635/espn-men-pound-pound-rankings/?xhr=1', function(error, response, body) {
 	  if (error || response.statusCode !== 200) return res.status(404).json({error: error});
 	  res.status(200).json(body);
 	});

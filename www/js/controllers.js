@@ -138,54 +138,48 @@ $scope.logoutFacebook = function(){
 };
 })
 
-.controller('GymsCtrl', function($scope) {
-})
-
-
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
 
 .controller('EventsCtrl', function($scope, $stateParams,mmaService) {
  mmaService.events().then(function(res){
- keeperObj = [];
- $scope.keeperObj = keeperObj;
+ eventObj = [];
+ $scope.eventObj = eventObj;
   var eventData = JSON.parse(res.data);
   $scope.eventResults = eventData;
-
   eventData.forEach(function(key,value){
-    keeperObj.push([key.arena,key.base_title,key.location,key.event_date,key.event_time,key.feature_image,key.ticketurl,key.title_tag_line]);
+    eventObj.push([key.arena,key.base_title,key.location,key.event_date,key.event_time,key.feature_image,key.ticketurl,key.title_tag_line]);
   });
-   console.log("KEEPER", keeperObj);
+   console.log("event", eventObj);
 });
-})
-
-.controller('EventCtrl', function($scope, $stateParams) {
 })
 
 .controller('FightersCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.fighters().then(function(res){
+   fighterObj = [];
+ $scope.fighterObj = fighterObj;
   var fighterData = JSON.parse(res.data);
   $scope.fighterResults = fighterData;
-   console.log(fighterData);
+  fighterData.forEach(function(key,value){
+    fighterObj.push(key);
+  });
+   console.log("fighter", fighterObj);
 });
 
 })
 
-.controller('FighterCtrl', function($scope, $stateParams) {
-})
-
 .controller('NewsCtrl',function($scope, $stateParams,$http, mmaService) {
- mmaService.news().then(function(res){
-  var newsData = JSON.parse(res.data);
-  $scope.newsResults = newsData;
-   console.log(newsData);
+     mmaService.news().then(function(res){
+    var p4pData = JSON.parse(res.data).content.categories;
+    $scope.p4pResults = p4pData;
+     console.log(p4pData);
   });
 })
 
 .controller('StoryCtrl', function($scope, $stateParams) {
 })
 
-.controller('ShopCtrl', function($scope) {})
+.controller('GymsCtrl', function($scope) {})
 
 .controller('ProgressCtrl', function($scope) {})
 

@@ -1,6 +1,11 @@
-<ion-view view-title="News">
+<ion-view view-title="Top Ranked Fighters">
   <ion-content>
-    <h1>News</h1>
-    {{newsResults}}
+    <ion-list>
+    <ion-item ng-repeat="p4p in p4pResults">
+	<center>
+	<p>{{p4p.athlete.description}}</p>
+	</center>
+    </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

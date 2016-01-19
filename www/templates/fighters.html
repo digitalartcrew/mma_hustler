@@ -1,6 +1,15 @@
 <ion-view view-title="Fighters">
   <ion-content>
-    <h1>Fighters</h1>
-    {{fighterResults}}
+    <ion-list>
+    <ion-item ng-repeat="fighter in fighterObj">
+    <center>
+    <img src={{fighter.thumbnail}}>
+    <p>{{fighter.first_name}} {{fighter.last_name}}</p>
+    <p>{{fighter.wins}}-{{fighter.losses}}-{{fighter.draws}}</p>
+    <p>{{fighter.weight_class}}</p>
+    <p>{{fighter.title}}</p>
+    </center>
+    </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

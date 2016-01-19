@@ -123,16 +123,6 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     }
   })
 
-  .state('app.singleevent', {
-    url: '/events/:eventId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/event.html',
-        controller: 'EventCtrl'
-      }
-    }
-  })
-
   .state('app.fighters', {
     url: '/fighters',
     views: {
@@ -142,17 +132,6 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
       }
     }
   })
-
-  .state('app.singlefighter', {
-    url: '/fighters/:fighterId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/fighter.html',
-        controller: 'FighterCtrl'
-      }
-    }
-  })
-
 
   .state('app.news', {
     url: '/news',
