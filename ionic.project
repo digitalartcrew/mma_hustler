@@ -1,6 +1,12 @@
 {
   "name": "mmaHustler",
   "app_id": "a2b7ad24",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:3001/api/endpoint"
+    }
+  ],
   "gulpStartupTasks": [
     "sass",
     "watch"
