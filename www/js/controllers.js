@@ -64,7 +64,7 @@ angular.module('starter.controllers', ['youtube-embed'])
     });
   }).then(function(authData) {
     console.log("Success!");
-    return $state.go('app.gyms');
+    return $state.go('app.media');
   }).catch(function(error) {
     console.error("ERROR " + error);
   });  
@@ -76,7 +76,7 @@ $scope.loginEmail = function(username, password){
     email: username,
     password: password
   }).then(function(authData) {
-   return $state.go('app.gyms');
+   return $state.go('app.media');
  }).catch(function(error) {
   console.error("ERROR: " + error);
 });
@@ -101,7 +101,7 @@ $scope.loginFacebook = function(){
         } else {
           console.log('Authenticated successfully with payload:', authData);
 
-          return $state.go('app.gyms');
+          return $state.go('app.media');
         }
       });
 
@@ -134,7 +134,7 @@ $scope.logoutFacebook = function(){
   ref.unauth();
   $scope.loggedIn = false;
   console.log("Should be loggin out!");
-  return $state.go('app.gyms');
+  return $state.go('app.media');
 };
 })
 
@@ -278,6 +278,32 @@ mmaService.bjj().then(function(res){
 })
 
 
+
+.controller('AccountCtrl', function($scope) {
+  $scope.settings = {
+    enableFriends: true
+  };
+})
+
+
+.controller('ChatsCtrl', function($scope, Chats) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+})
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {

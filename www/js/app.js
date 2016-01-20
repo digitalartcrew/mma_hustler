@@ -208,12 +208,21 @@ app.run(function(MyDataService) {
       }
     }
   })
-  .state('app.goals', {
-    url: '/goals',
+  .state('app.chats', {
+    url: '/chats',
     views: {
       'menuContent': {
-        templateUrl: 'templates/goals.html',
-        controller: 'GoalsCtrl'
+        templateUrl: 'templates/chats.html',
+        controller: 'ChatsCtrl'
+      }
+    }
+  })
+    .state('app.chat-detail', {
+    url: '/chats/:chatId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/chat-detail.html',
+        controller: 'ChatDetailCtrl'
       }
     }
   })
@@ -226,15 +235,7 @@ app.run(function(MyDataService) {
       }
     }
   })
-  .state('app.blog', {
-    url: '/blog',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/blog.html',
-        controller: 'BlogCtrl'
-      }
-    }
-  })
+
   .state('app.friends', {
     url: '/friends',
     views: {
@@ -288,5 +289,5 @@ app.run(function(MyDataService) {
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/gyms');
+  $urlRouterProvider.otherwise('/app/media');
 });
