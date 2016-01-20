@@ -203,12 +203,17 @@ $scope.logoutFacebook = function(){
 
 .controller('InstructionsCtrl', function($scope) {})
 
-.controller('MediaCtrl', function($scope, $stateParams,$http, mmaService) {
- mmaService.media().then(function(res){
-  var mediaData = JSON.parse(res.data).response.venues;
-  $scope.mediaResults = mediaData;
-   console.log(mediaData);
-});
+.controller('MediaCtrl', function($scope, $stateParams,mmaService) {
+  mmaService.media().then(function(res){
+    mediaObj = [];
+    $scope.mediaObj = mediaObj;
+    var mediaData = JSON.parse(res.data);
+    $scope.mediaResults = mediaData;
+    mediaData.forEach(function(key,value){
+    mediaObj.push(key);
+  });
+   console.log("media", mediaObj);
+ });
 })
 
 //Fitness Controllers

@@ -34,14 +34,14 @@ app.run(function(MyDataService) {
     }
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
-            if (toState.name !== "app.login" && toState.name !== "app.logout" && !$window.sessionStorage.fbtoken) {
-                $state.go('app.login');
+            if (!$window.localStorage["firebase:session::shining-fire-8120"]) {
+                $state.go('app');
                 event.preventDefault();
             }
         });
 
         $rootScope.$on('OAuthException', function() {
-            $state.go('app.login');
+            $state.go('app.media');
         });
   });
 
@@ -57,7 +57,6 @@ app.run(function(MyDataService) {
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-
 
   .state('app.gyms', {
     url: '/gyms',
