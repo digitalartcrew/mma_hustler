@@ -35,6 +35,5 @@
   ],
   "cordovaPlatforms": [
     "ios",
-    "android"
   ]
 }

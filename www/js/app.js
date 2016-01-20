@@ -18,9 +18,9 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
 app.run(function(MyDataService) {
-  MyDataService.getThings().then(function(data) {
+  setTimeout(function() {
     $cordovaSplashscreen.hide();
-  });
+  }, 10000);
 });
 
   if (window.cordova && window.cordova.plugins.Keyboard) {
