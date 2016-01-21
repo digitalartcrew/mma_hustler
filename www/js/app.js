@@ -168,26 +168,6 @@ app.run(function(MyDataService) {
     }
   })
 
-  .state('app.story', {
-    url: '/news/:storyId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/story.html',
-        controller: 'FighterCtrl'
-      }
-    }
-  })
-
-  .state('app.shop', {
-    url: '/shop',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/shop.html',
-        controller: 'ShopCtrl'
-      }
-    }
-  })
-
   .state('app.account', {
     url: '/account',
     views: {

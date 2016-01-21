@@ -1,4 +1,86 @@
 /* Empty. Add your own CSS if you like */
+/*Cover CSS Begin*/
+ion-content.padding.dark-item.scroll-content.ionic-scroll.has-header.has-footer {
+    background-image:
+    linear-gradient(
+      black, #f06d06
+    );
+}
+
+.menu .bar-header {
+    z-index: 11;
+    background-color: black;
+}
+
+.bar .title {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    margin: 0 10px;
+    min-width: 30px;
+    height: 43px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 44px;
+    color: white;
+}
+h1
+
+ion-content.padding.scroll-content.ionic-scroll.has-header {
+    background-color: #FF0000;
+}
+
+.bar-header {
+    top: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    background-color: #FF0000;
+}
+
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: white;
+    background-color: black;
+    );
+}
+
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
+    background-color: black;
+}
+
+.scroll {
+    background-image:
+    linear-gradient(
+      red, #f06d06
+    );
+}
+
+.item-complex .item-content, .item-radio .item-content {
+    position: relative;
+    z-index: 2;
+    padding: 16px 49px 16px 16px;
+    border: none;
+    background-color: black;
+}
+
+.bar.bar-stable.bar-footer {
+    background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    background-color: #000;
+}
+
+
+a.item-content {
+    color: white;
+}
 
 .top {
 	margin: 1px;
@@ -12,111 +94,11 @@
 
 .scroll {
     height: 100%;
+
 }
- 
-#map {
-        height: 100%;
-      }
-    </style>
 
-    <style>
-      table {
-        font-size: 12px;
-      }
-      #map {
-        width: 440px;
-      }
-      #listing {
-        position: absolute;
-        width: 200px;
-        height: 470px;
-        overflow: auto;
-        left: 442px;
-        top: 0px;
-        cursor: pointer;
-        overflow-x: hidden;
-      }
-      #findhotels {
-        position: absolute;
-        text-align: right;
-        width: 100px;
-        font-size: 14px;
-        padding: 4px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #locationField {
-        position: absolute;
-        width: 190px;
-        height: 25px;
-        left: 108px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #controls {
-        position: absolute;
-        left: 300px;
-        width: 140px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #autocomplete {
-        width: 100%;
-      }
-      #country {
-        width: 100%;
-      }
-      .placeIcon {
-        width: 20px;
-        height: 34px;
-        margin: 4px;
-      }
-      .hotelIcon {
-        width: 24px;
-        height: 24px;
-      }
-      #resultsTable {
-        border-collapse: collapse;
-        width: 240px;
-      }
-      #rating {
-        font-size: 13px;
-        font-family: Arial Unicode MS;
-      }
-      .iw_table_row {
-        height: 18px;
-      }
-      .iw_attribute_name {
-        font-weight: bold;
-        text-align: right;
-      }
-      .iw_table_icon {
-        text-align: right;
-      }
-         .embed-responsive {
-      position: relative;
-      display: block;
-      height: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .embed-responsive.embed-responsive-16by9 {
-      padding-bottom: 56.25%;
-    }
-
-    .embed-responsive-item {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .videoWrapper {
+  .videoWrapper {
+ }
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
