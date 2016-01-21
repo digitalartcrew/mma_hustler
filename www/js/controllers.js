@@ -287,8 +287,13 @@ console.log($rootScope.authData.uid);
 console.log($rootScope.displayName);
 var chatRef = new Firebase('https://shining-fire-8120.firebaseio.com/chat');
 var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
-// chat.setUser($rootScope.authData.uid, $rootScope.authData.facebook.displayName || $rootScope.displayName);
-// console.log($rootScope.authData.uid, $rootScope.authData.facebook.displayName || $rootScope.displayName);
+chat.setUser($rootScope.authData.uid, function(){
+  if(!$rootScope.authData.facebook.displayName){
+    return $rootScope.displayName;
+  }else{
+    return $rootScope.authData.facebook.displayName;
+  }});
+
 })
 
 
