@@ -1,15 +1,17 @@
-<ion-view view-title="Fighters">
-  <ion-content>
-    <ion-list>
-    <ion-item ng-repeat="fighter in fighterObj">
-    <center>
-    <img src={{fighter.thumbnail}}>
-    <p>{{fighter.first_name}} {{fighter.last_name}}</p>
-    <p>{{fighter.wins}}-{{fighter.losses}}-{{fighter.draws}}</p>
-    <p>{{fighter.weight_class}}</p>
-    <p>{{fighter.title}}</p>
-    </center>
-    </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-view>
+ <ion-view view-title="Fighters">
+ <ion-header-bar class="bar-positive">
+ <h1 class="title">Fighters</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+<div class="list">
+  <a ng-repeat="fighter in fighterObj" 
+  href="#/{{fighter.id}}"
+  class="item item-thumbnail-left">
+  <img image-lazy-src={{fighter.thumbnail}}>
+  <h2>{{fighter.first_name}} {{fighter.last_name}}</h2>
+  <h1>{{fighter.wins}}-{{fighter.losses}}-{{fighter.draws}}</h1>
+  <p>{{fighter.weight_class}}</p>
+  <p>{{fighter.title}}</p>
+</a>
+</div>
+</ion-content>

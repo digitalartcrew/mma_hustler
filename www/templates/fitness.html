@@ -1,19 +1,15 @@
 <ion-view view-title="Fitness">
-<ion-content>
-<ion-list>
-   <ion-item ng-repeat="fitness in fitnessResults">
-      <div>
-        <p>{{fitness.name}}</p>
-        <p>{{fitness.contact.formmattedPhone}}</p>
-        <p>{{fitness.contact.twitter}}</p>
-        <p>{{fitness.location.city}}</p>
-        <p>{{fitness.location.state}}</p>
-        <p>{{fitness.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">Fitness</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="fitness in fitnessResults">
+  <center>
+    <h2>{{fitness.name}}</h2>
+    <p>{{fitness.location.city}},{{fitness.location.state}}</p>
+    <h3>{{fitness.url}}</h3>
+    <p>{{fitness.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
 

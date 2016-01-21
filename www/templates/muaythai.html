@@ -1,20 +1,14 @@
-<ion-view view-title="Muay Thai">
-<ion-content>
-	<h1>Muay Thai</h1>
-<ion-list>
-   <ion-item ng-repeat="muaythai in muaythaiResults">
-      <div>
-        <p>{{muaythai.name}}</p>
-        <p>{{muaythai.contact.formmattedPhone}}</p>
-        <p>{{muaythai.contact.twitter}}</p>
-        <p>{{muaythai.location.city}}</p>
-        <p>{{muaythai.location.state}}</p>
-        <p>{{muaythai.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">Muay Thai</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="muaythai in muaythaiResults">
+  <center>
+    <h2>{{muaythai.name}}</h2>
+    <p>{{muaythai.location.city}},{{muaythai.location.state}}</p>
+    <h3>{{muaythai.url}}</h3>
+    <p>{{muaythai.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
 

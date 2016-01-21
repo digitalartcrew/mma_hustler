@@ -1,19 +1,23 @@
-<ion-view view-title="Events">
-  <ion-content>
-    <ion-list>
-    <ion-item ng-repeat="event in eventObj track by $index">
-    <p><img width="100%" src={{event[5]}}></p>
-    <p>{{event[1]}}</p>
-    <p>{{event[7]}}</p>
-    <p>{{event[0]}}</p>
-    <p>{{event[2]}}</p>
-    <p>{{event[3]}}</p>
-    <p>{{event[4]}}</p>
-    <p><a class="button" href="{{event[6]}}">Buy Tickets</a></p>
-    </ion-item>
-    </ion-list>
-  </ion-content>
+ <ion-view view-title="Events">
+ <ion-header-bar class="bar-positive">
+ <h1 class="title">Events</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+<div class="list">
+  <a ng-repeat="event in eventObj" class="item item-thumbnail-left">
+  <img image-lazy-src={{event[5]}}>
+  <h2>{{event[1]}}</h2>
+  <h3>{{event[7]}}</h3>
+  <p>{{event[2]}}</p>
+  <p>{{event[3]}}</p>
+  <button nghref={{event[6]}}>Buy Tickets</button>
+</a>
+</a>
+</div>
+</ion-content>
 </ion-view>
+
+
 
 
 

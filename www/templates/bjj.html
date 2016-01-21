@@ -1,19 +1,17 @@
 <ion-view view-title="BJJ">
-<ion-content>
-<ion-list>
-   <ion-item ng-repeat="bjj in bjjResults">
-      <div>
-        <p>{{bjj.name}}</p>
-        <p>{{bjj.contact.formmattedPhone}}</p>
-        <p>{{bjj.contact.twitter}}</p>
-        <p>{{bjj.location.city}}</p>
-        <p>{{bjj.location.state}}</p>
-        <p>{{bjj.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">Bjj</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="bjj in bjjResults">
+  <center>
+    <h2>{{bjj.name}}</h2>
+    <p>{{bjj.location.city}},{{bjj.location.state}}</p>
+    <h3>{{bjj.url}}</h3>
+    <p>{{bjj.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
+
+
 

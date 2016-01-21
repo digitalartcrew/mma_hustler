@@ -1,19 +1,14 @@
 <ion-view view-title="Wrestling">
-<ion-content>
-<ion-list>
-   <ion-item ng-repeat="wrestling in wrestlingResults">
-      <div>
-        <p>{{wrestling.name}}</p>
-        <p>{{wrestling.contact.formmattedPhone}}</p>
-        <p>{{wrestling.contact.twitter}}</p>
-        <p>{{wrestling.location.city}}</p>
-        <p>{{wrestling.location.state}}</p>
-        <p>{{wrestling.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">Wrestling</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="wrestling in wrestlingResults">
+  <center>
+    <h2>{{wrestling.name}}</h2>
+    <p>{{wrestling.location.city}},{{wrestling.location.state}}</p>
+    <h3>{{wrestling.url}}</h3>
+    <p>{{wrestling.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
-

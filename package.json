@@ -9,6 +9,7 @@
     "cors": "^2.7.1",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
+    "firebase-token-generator": "^2.0.0",
     "firechat": "^2.0.1",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",

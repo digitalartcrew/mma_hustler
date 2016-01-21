@@ -1,19 +1,15 @@
-<ion-view view-title="Boxing">
-<ion-content>
-<ion-list>
-   <ion-item ng-repeat="boxing in boxingResults">
-      <div>
-        <p>{{boxing.name}}</p>
-        <p>{{boxing.contact.formmattedPhone}}</p>
-        <p>{{boxing.contact.twitter}}</p>
-        <p>{{boxing.location.city}}</p>
-        <p>{{boxing.location.state}}</p>
-        <p>{{boxing.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">Boxing</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="boxing in boxingResults">
+  <center>
+    <h2>{{boxing.name}}</h2>
+    <p>{{boxing.location.city}},{{boxing.location.state}}</p>
+    <h3>{{boxing.url}}</h3>
+    <p>{{boxing.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
+
 

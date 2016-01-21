@@ -1,19 +1,15 @@
 <ion-view view-title="MMA">
-<ion-content>
-<ion-list>
-   <ion-item ng-repeat="mma in mmaResults">
-      <div>
-        <p>{{mma.name}}</p>
-        <p>{{mma.contact.formmattedPhone}}</p>
-        <p>{{mma.contact.twitter}}</p>
-        <p>{{mma.location.city}}</p>
-        <p>{{mma.location.state}}</p>
-        <p>{{mma.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">mma</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="mma in mmaResults">
+  <center>
+    <h2>{{mma.name}}</h2>
+    <p>{{mma.location.city}},{{mma.location.state}}</p>
+    <h3>{{mma.url}}</h3>
+    <p>{{mma.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
 

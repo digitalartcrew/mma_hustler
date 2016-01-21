@@ -262,5 +262,5 @@ app.run(function(MyDataService) {
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/media');
+  $urlRouterProvider.otherwise('/app/gyms');
 });

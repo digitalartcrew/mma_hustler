@@ -1,19 +1,15 @@
 <ion-view view-title="Yoga">
-<ion-content>
-<ion-list>
-   <ion-item ng-repeat="yoga in yogaResults">
-      <div>
-        <p>{{yoga.name}}</p>
-        <p>{{yoga.contact.formmattedPhone}}</p>
-        <p>{{yoga.contact.twitter}}</p>
-        <p>{{yoga.location.city}}</p>
-        <p>{{yoga.location.state}}</p>
-        <p>{{yoga.url}}</p>
-        </div>
-      </ion-item>
-</ion-list>
+<ion-header-bar class="bar-positive">
+ <h1 class="title">Yoga</h1>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <ion-item ng-repeat="yoga in yogaResults">
+  <center>
+    <h2>{{yoga.name}}</h2>
+    <p>{{yoga.location.city}},{{yoga.location.state}}</p>
+    <h3>{{yoga.url}}</h3>
+    <p>{{yoga.contact.formmattedPhone}}</p>
+    </center>
+ </ion-item>
 </ion-content>
-</ion-view>
-<ion-footer-bar class="bar-dark">
-</ion-footer-bar>
 
