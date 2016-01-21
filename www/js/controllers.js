@@ -12,7 +12,8 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
   };
 
   // take chat off if you need to - added by ian to get chat working
-  var ref = new Firebase("https://shining-fire-8120.firebaseio.com/chat");
+  var chatRef = new Firebase("https://shining-fire-8120.firebaseio.com/chat");
+  var ref = new Firebase("https://shining-fire-8120.firebaseio.com/");
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -56,85 +57,91 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
   //   }, 1000);
   // };
 
-  $scope.signupEmail = function(username,password){  
-   var refAuth = $firebaseAuth(ref);
-   refAuth.$createUser({email: username, password: password}).then(function() {
-    return refAuth.$authWithPassword({
-      email: username,
-      password: password
-    });
-  }).then(function(authData) {
-    console.log("Success!");
-    return $state.go('app.media');
-  }).catch(function(error) {
-    console.error("ERROR " + error);
-  });  
-};
 
-$scope.loginEmail = function(username, password){
-  var refAuth = $firebaseAuth(ref);
-  refAuth.$authWithPassword({
-    email: username,
-    password: password
-  }).then(function(authData) {
-   return $state.go('app.media');
- }).catch(function(error) {
-  console.error("ERROR: " + error);
-});
- $timeout(function() {
-  $scope.closeLogin();
-}, 1000);
-
-};
-
-
-$scope.loginFacebook = function(){
-
-  if(ionic.Platform.isWebView()){
-
-    $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
-
-      console.log(success);
-
-      ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
-        if (error) {
-          console.log('Firebase login failed!', error);
-        } else {
-          console.log('Authenticated successfully with payload:', authData);
-
-          return $state.go('app.media');
-        }
-      });
-
-    }, function(error){
-      console.log(error);
-    });        
-
-  }
-  else {
-
-    ref.authWithOAuthPopup("facebook", function(error, authData) {
+  $scope.signupEmail = function(user){  
+    ref.createUser({
+      email    : user.email,
+      password : user.password
+    }, function(error, userData) {
       if (error) {
-        console.log("Login Failed!", error);
+        console.log("Error creating user:", error);
       } else {
-        fbData.push(authData);
-        $scope.displayName = authData.facebook.displayName;
-        $scope.profileImageURL = authData.facebook.profileImageURL;
-        $scope.modal.hide();
-        $scope.loggedIn = true;
-        $rootScope.authData = authData;
+        console.log("Successfully created user account with uid:", userData.uid);
+        return $state.go('app.media');
       }
     });
-  }
-};
+  };
+
+  $scope.loginEmail = function(user){
+    var refAuth = $firebaseAuth(ref);
+    refAuth.$authWithPassword({
+      email: user.email,
+      password: user.password
+    }).then(function(authData) {
+      $rootScope.displayName = user.email;
+      $scope.profileImageURL = "./img/ben.png";
+      $scope.modal.hide();
+      $scope.loggedIn = true;
+      $rootScope.authData = authData;
+      console.log(authData);
+      return $state.go('app.media');
+    }).catch(function(error) {
+      console.error("ERROR: " + error);
+    });
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
+
+  };
 
 
-$scope.logoutFacebook = function(){
-  ref.unauth();
-  $scope.loggedIn = false;
-  console.log("Should be loggin out!");
-  return $state.go('app.media');
-};
+  $scope.loginFacebook = function(){
+
+    if(ionic.Platform.isWebView()){
+
+      $cordovaFacebook.login(["public_profile", "email"]).then(function(success){
+
+        console.log(success);
+
+        ref.authWithOAuthToken("facebook", success.authResponse.accessToken, function(error, authData) {
+          if (error) {
+            console.log('Firebase login failed!', error);
+          } else {
+            console.log('Authenticated successfully with payload:', authData);
+
+            return $state.go('app.media');
+          }
+        });
+
+      }, function(error){
+        console.log(error);
+      });        
+
+    }
+    else {
+
+      ref.authWithOAuthPopup("facebook", function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          fbData.push(authData);
+          $scope.displayName = authData.facebook.displayName;
+          $scope.profileImageURL = authData.facebook.profileImageURL;
+          $scope.modal.hide();
+          $scope.loggedIn = true;
+          $rootScope.authData = authData;
+        }
+      });
+    }
+  };
+
+
+  $scope.logoutFacebook = function(){
+    ref.unauth();
+    $scope.loggedIn = false;
+    console.log("Should be loggin out!");
+    return $state.go('app.media');
+  };
 })
 
 .controller('HomeCtrl', function($scope, $stateParams) {
@@ -142,37 +149,37 @@ $scope.logoutFacebook = function(){
 
 .controller('EventsCtrl', function($scope, $stateParams,mmaService) {
  mmaService.events().then(function(res){
- eventObj = [];
- $scope.eventObj = eventObj;
-  var eventData = JSON.parse(res.data);
-  $scope.eventResults = eventData;
-  eventData.forEach(function(key,value){
+   eventObj = [];
+   $scope.eventObj = eventObj;
+   var eventData = JSON.parse(res.data);
+   $scope.eventResults = eventData;
+   eventData.forEach(function(key,value){
     eventObj.push([key.arena,key.base_title,key.location,key.event_date,key.event_time,key.feature_image,key.ticketurl,key.title_tag_line]);
   });
    console.log("event", eventObj);
-});
+ });
 })
 
 .controller('FightersCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.fighters().then(function(res){
    fighterObj = [];
- $scope.fighterObj = fighterObj;
-  var fighterData = JSON.parse(res.data);
-  $scope.fighterResults = fighterData;
-  fighterData.forEach(function(key,value){
+   $scope.fighterObj = fighterObj;
+   var fighterData = JSON.parse(res.data);
+   $scope.fighterResults = fighterData;
+   fighterData.forEach(function(key,value){
     fighterObj.push(key);
   });
    console.log("fighter", fighterObj);
-});
+ });
 
 })
 
 .controller('NewsCtrl',function($scope, $stateParams,$http, mmaService) {
-     mmaService.news().then(function(res){
-    var p4pData = JSON.parse(res.data).content.categories;
-    $scope.p4pResults = p4pData;
-     console.log(p4pData);
-  });
+ mmaService.news().then(function(res){
+  var p4pData = JSON.parse(res.data).content.categories;
+  $scope.p4pResults = p4pData;
+  console.log(p4pData);
+});
 })
 
 .controller('StoryCtrl', function($scope, $stateParams) {
@@ -199,10 +206,10 @@ $scope.logoutFacebook = function(){
     var mediaData = JSON.parse(res.data);
     $scope.mediaResults = mediaData;
     mediaData.forEach(function(key,value){
-    mediaObj.push(key);
+      mediaObj.push(key);
+    });
+    console.log("media", mediaObj);
   });
-   console.log("media", mediaObj);
- });
 })
 
 //Fitness Controllers
@@ -210,23 +217,23 @@ $scope.logoutFacebook = function(){
  mmaService.boxing().then(function(res){
   var boxingData = JSON.parse(res.data).response.venues;
   $scope.boxingResults = boxingData;
-   console.log(boxingData);
+  console.log(boxingData);
 });
 })
 
 .controller('BjjCtrl', function($scope, $stateParams,$http, mmaService) {
-mmaService.bjj().then(function(res){
-  var bjjData = JSON.parse(res.data).response.venues;
-  $scope.bjjResults = bjjData;
-   console.log(bjjData);
-});
+  mmaService.bjj().then(function(res){
+    var bjjData = JSON.parse(res.data).response.venues;
+    $scope.bjjResults = bjjData;
+    console.log(bjjData);
+  });
 })
 
 .controller('MmaCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.mma().then(function(res){
   var mmaData = JSON.parse(res.data).response.venues;
   $scope.mmaResults = mmaData;
-   console.log(mmaData);
+  console.log(mmaData);
 });
 })
 
@@ -234,7 +241,7 @@ mmaService.bjj().then(function(res){
  mmaService.muaythai().then(function(res){
   var muaythaiData = JSON.parse(res.data).response.venues;
   $scope.muaythaiResults = muaythaiData;
-   console.log(muaythaiData);
+  console.log(muaythaiData);
 });
 })
 
@@ -242,23 +249,23 @@ mmaService.bjj().then(function(res){
  mmaService.yoga().then(function(res){
   var yogaData = JSON.parse(res.data).response.venues;
   $scope.yogaResults = yogaData;
-   console.log(yogaData);
+  console.log(yogaData);
 });
 })
 
 .controller('WrestlingCtrl', function($scope, $stateParams,$http, mmaService) {
   mmaService.wrestling().then(function(res){
-  var wrestlingData = JSON.parse(res.data).response.venues;
-  $scope.wrestlingResults = wrestlingData;
-   console.log(wrestlingData);
-});
+    var wrestlingData = JSON.parse(res.data).response.venues;
+    $scope.wrestlingResults = wrestlingData;
+    console.log(wrestlingData);
+  });
 })
 
 .controller('FitnessCtrl', function($scope, $stateParams,$http, mmaService) {
  mmaService.fitness().then(function(res){
   var fitnessData = JSON.parse(res.data).response.venues;
   $scope.fitnessResults = fitnessData;
-   console.log(fitnessData);
+  console.log(fitnessData);
 });
 })
 
@@ -276,9 +283,12 @@ mmaService.bjj().then(function(res){
 
 .controller('ChatsCtrl',function($scope,$rootScope) {
 // Create a new Firebase reference, and a new instance of the Login client
-  var chatRef = new Firebase('https://shining-fire-8120.firebaseio.com/chat');
-  var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
-  chat.setUser($rootScope.authData.uid, $rootScope.authData.facebook.displayName);
+console.log($rootScope.authData.uid);
+console.log($rootScope.displayName);
+var chatRef = new Firebase('https://shining-fire-8120.firebaseio.com/chat');
+var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
+// chat.setUser($rootScope.authData.uid, $rootScope.authData.facebook.displayName || $rootScope.displayName);
+// console.log($rootScope.authData.uid, $rootScope.authData.facebook.displayName || $rootScope.displayName);
 })
 
 

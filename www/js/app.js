@@ -35,7 +35,7 @@ app.run(function(MyDataService) {
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
             if (!$window.localStorage["firebase:session::shining-fire-8120"]) {
-                $state.go('app');
+                $state.go('app.media');
                 event.preventDefault();
             }
         });
