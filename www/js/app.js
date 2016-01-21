@@ -188,16 +188,6 @@ app.run(function(MyDataService) {
     }
   })
 
-    .state('app.messages', {
-    url: '/messages',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/messages.html',
-        controller: 'MessageCtrl'
-      }
-    }
-  })
-
   .state('app.films', {
     url: '/films',
     views: {

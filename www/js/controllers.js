@@ -79,7 +79,7 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
       password: user.password
     }).then(function(authData) {
       $rootScope.displayName = user.email;
-      $scope.profileImageURL = "./img/ben.png";
+      $scope.profileImageURL = "http://imgur.com/rVQ6mlF";
       $scope.modal.hide();
       $scope.loggedIn = true;
       $rootScope.authData = authData;
@@ -212,35 +212,37 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
   });
 
   $scope.images = {
-    1: "img/1.jpg",
-    2: "/img/2.jpg",
-    3: "/img/3.jpg",
-    4: "/img/4.jpg",
-    5: "/img/5.jpg",
-    6: "/img/6.jpg",
-    7: "/img/7.jpg",
-    8: "/img/8.jpg",
-    9: "/img/9.jpg",
-    10: "/img/10.jpg",
-    11: "/img/11.jpg",
-    12: "/img/12.jpg",
-    13: "/img/13.jpg",
-    14: "/img/14.jpg",
-    15: "/img/15.jpg",
-    16: "/img/16.jpg",
-    17: "/img/17.jpg",
-    18: "/img/18.jpg",
-    19: "/img/19.jpg",
-    20: "/img/20.jpg",
-    21: "/img/21.jpg",
-    22: "/img/22.jpg",
-    24: "/img/24.jpg",
-    25: "/img/25.jpg",
-    26: "/img/26.jpg",
-    27: "/img/27.jpg",
-    28: "/img/28.jpg",
-    29: "/img/29.jpg",
-    30: "/img/30.jpg",
+    1: "http://i.imgur.com/NLeaT6m.jpg",
+    2: "http://i.imgur.com/NwMbr0d.jpg",
+    3: "http://i.imgur.com/UEMbIwa.jpg",
+    4: "http://i.imgur.com/Tj4oRAa.jpg",
+    5: "http://i.imgur.com/GV1oW5p.jpg",
+    6: "http://i.imgur.com/knNFalP.jpg",
+    7: "http://i.imgur.com/9hyLJ8c.jpg",
+    8: "http://i.imgur.com/BohlKy9.jpg",
+    9: "http://i.imgur.com/IgK7v3w.jpg",
+    10: "http://i.imgur.com/vrdYtSQ.jpg",
+    11: "http://i.imgur.com/1Ekag3M.jpg",
+    12: "http://i.imgur.com/Jli8bnP.jpg",
+    13: "http://i.imgur.com/BIyGK9f.jpg",
+    14: "http://i.imgur.com/urbKFgl.jpg",
+    15: "http://i.imgur.com/R8stslh.jpg",
+    16: "http://i.imgur.com/LOlVY7u.jpg",
+    17: "http://i.imgur.com/gMi9wqj.jpg",
+    18: "http://i.imgur.com/PD4aWDz.jpg",
+    19: "http://i.imgur.com/APF4LU4.jpg",
+    20: "http://i.imgur.com/36FJuej.jpg",
+    21: "http://i.imgur.com/36FJuej.jpg",
+    22: "http://i.imgur.com/qlWE8Zv.jpg",
+    24: "http://i.imgur.com/2vOwsXQ.jpg",
+    25: "http://i.imgur.com/JyGIGV2.jpg",
+    26: "http://i.imgur.com/GI1e8Pr.jpg",
+    27: "http://i.imgur.com/MkgEGVU.jpg",
+    28: "http://i.imgur.com/I7UvBj6.jpg",
+    29: "http://i.imgur.com/ZB4z1iG.jpg",
+    30: "http://i.imgur.com/HP9ygQG.jpg",
+    31: "http://i.imgur.com/1kHhnJV.jpg",
+    32: "http://i.imgur.com/DtcGAek.jpg",
   };
 })
 
