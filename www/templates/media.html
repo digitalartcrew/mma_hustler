@@ -5,7 +5,7 @@
     <p><img width="100%" image-lazy-src="{{image}}"></p>
     </ion-item>
 	<ion-item ng-repeat="media in mediaObj">
-        <img src="{{media.thumbnail}}">
+        <img ng-src={{media.thumbnail}}>
     <h3>{{media.title}}</h3>
     <center>
     <p>{{media.description}}</p>

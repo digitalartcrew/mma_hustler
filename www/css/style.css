@@ -37,6 +37,14 @@ ion-content.padding.scroll-content.ionic-scroll.has-header {
     background-color: #FF0000;
 }
 
+.padding {
+    padding: 10px;
+    background-image:
+    linear-gradient(
+      red, #f06d06
+    );
+}
+
 .bar-header {
     top: 0;
     border-top-width: 0;
@@ -47,7 +55,6 @@ ion-content.padding.scroll-content.ionic-scroll.has-header {
 .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
     color: white;
     background-color: black;
     );
