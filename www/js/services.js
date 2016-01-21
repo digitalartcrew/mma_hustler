@@ -1,37 +1,37 @@
 app.factory('mmaService', function($http, $q) {
 	return {
 		news: function(){
-			return $http.get('http://localhost:3001/news');
+			return $http.get('https://mma-hustler.herokuapp.com/news');
 		},
 		media: function(){
-			return $http.get('http://localhost:3001/media');
+			return $http.get('https://mma-hustler.herokuapp.com/media');
 		},
 		fighters: function(){
-			return $http.get('http://localhost:3001/fighters');
+			return $http.get('https://mma-hustler.herokuapp.com/fighters');
 		},
 		events: function(){
-			return $http.get('http://localhost:3001/events');
+			return $http.get('https://mma-hustler.herokuapp.com/events');
 		},
 		boxing: function(){
-			return $http.get('http://localhost:3001/boxing');
+			return $http.get('https://mma-hustler.herokuapp.com/boxing');
 		},
 		mma: function(){
-			return $http.get('http://localhost:3001/mma');
+			return $http.get('https://mma-hustler.herokuapp.com/mma');
 		},
 		bjj: function(){
-			return $http.get('http://localhost:3001/bjj');
+			return $http.get('https://mma-hustler.herokuapp.com/bjj');
 		},
 		muaythai: function(){
-			return $http.get('http://localhost:3001/muaythai');
+			return $http.get('https://mma-hustler.herokuapp.com/muaythai');
 		},
 		yoga: function(){
-			return $http.get('http://localhost:3001/yoga');
+			return $http.get('https://mma-hustler.herokuapp.com/yoga');
 		},
 		fitness: function(){
-			return $http.get('http://localhost:3001/fitness');
+			return $http.get('https://mma-hustler.herokuapp.com/fitness');
 		},
 		wrestling: function(){
-			return $http.get('http://localhost:3001/wrestling');
+			return $http.get('https://mma-hustler.herokuapp.com/wrestling');
 		},
 	};
 

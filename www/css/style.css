@@ -7,6 +7,11 @@ ion-content.padding.dark-item.scroll-content.ionic-scroll.has-header.has-footer 
     );
 }
 
+img {
+    -webkit-user-drag: none;
+    padding-top: 5px;
+}
+
 .menu .bar-header {
     z-index: 11;
     background-color: black;
@@ -60,8 +65,8 @@ ion-content.padding.scroll-content.ionic-scroll.has-header {
     );
 }
 
-[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-    background-color: black;
+ion-header-bar.bar-positive.bar.bar-header {
+    background: black;
 }
 
 .scroll {
