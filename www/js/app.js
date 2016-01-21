@@ -198,15 +198,6 @@ app.run(function(MyDataService) {
     }
   })
 
-  .state('app.progress', {
-    url: '/progress',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/progress.html',
-        controller: 'ProgressCtrl'
-      }
-    }
-  })
   .state('app.chats', {
     url: '/chats',
     views: {
@@ -216,15 +207,17 @@ app.run(function(MyDataService) {
       }
     }
   })
-    .state('app.chat-detail', {
-    url: '/chats/:chatId',
+
+    .state('app.messages', {
+    url: '/messages',
     views: {
       'menuContent': {
-        templateUrl: 'templates/chat-detail.html',
-        controller: 'ChatDetailCtrl'
+        templateUrl: 'templates/messages.html',
+        controller: 'MessageCtrl'
       }
     }
   })
+
   .state('app.films', {
     url: '/films',
     views: {
@@ -235,35 +228,16 @@ app.run(function(MyDataService) {
     }
   })
 
-  .state('app.friends', {
-    url: '/friends',
+  .state('app.about', {
+    url: '/about',
     views: {
       'menuContent': {
-        templateUrl: 'templates/friends.html',
-        controller: 'FriendsCtrl'
+        templateUrl: 'templates/about.html',
+        controller: 'AboutCtrl'
       }
     }
   })
 
-  .state('app.singlefriend', {
-    url: '/friends/:friendId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/friend.html',
-        controller: 'FriendCtrl'
-      }
-    }
-  })
-
-  .state('app.instructions', {
-    url: '/instructions',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/instructions.html',
-        controller: 'InstructionsCtrl'
-      }
-    }
-  })
 
   .state('app.media', {
     url: '/media',

@@ -1,8 +1,9 @@
-angular.module('starter.controllers', ['youtube-embed'])
+angular.module('starter.controllers', ['youtube-embed','firebase'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state,$http,$firebaseAuth) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state,$http,$firebaseAuth,$rootScope) {
   $scope.data = {};
   var authData;
+  $scope.authData  = authData;
 
 
   $scope.loggedIn = false;
@@ -10,8 +11,8 @@ angular.module('starter.controllers', ['youtube-embed'])
     return $scope.loggedIn;
   };
 
-  
-  var ref = new Firebase("https://shining-fire-8120.firebaseio.com");
+  // take chat off if you need to - added by ian to get chat working
+  var ref = new Firebase("https://shining-fire-8120.firebaseio.com/chat");
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -121,12 +122,10 @@ $scope.loginFacebook = function(){
         $scope.profileImageURL = authData.facebook.profileImageURL;
         $scope.modal.hide();
         $scope.loggedIn = true;
-
+        $rootScope.authData = authData;
       }
     });
-
   }
-
 };
 
 
@@ -183,7 +182,7 @@ $scope.logoutFacebook = function(){
 
 .controller('ProgressCtrl', function($scope) {})
 
-.controller('GoalsCtrl', function($scope) {})
+.controller('MessageCtrl', function($scope) {})
 
 .controller('FilmsCtrl', function($scope,$http) {
  $scope.video1 = ['6hK14hRi4Vs'];
@@ -191,17 +190,7 @@ $scope.logoutFacebook = function(){
  $scope.video3 = ['9Y-KnFSVTT4'];
 })
 
-.controller('BlogCtrl', function($scope) {})
-
-.controller('UsersCtrl', function($scope) {})
-
-.controller('UserCtrl', function($scope) {})
-
-.controller('FriendCtrl', function($scope) {})
-
-.controller('FriendsCtrl', function($scope) {})
-
-.controller('InstructionsCtrl', function($scope) {})
+.controller('AboutCtrl', function($scope) {})
 
 .controller('MediaCtrl', function($scope, $stateParams,mmaService) {
   mmaService.media().then(function(res){
@@ -284,31 +273,14 @@ mmaService.bjj().then(function(res){
 
 
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+
+.controller('ChatsCtrl',function($scope,$rootScope) {
+// Create a new Firebase reference, and a new instance of the Login client
+  var chatRef = new Firebase('https://shining-fire-8120.firebaseio.com/chat');
+  var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
+  chat.setUser($rootScope.authData.uid, $rootScope.authData.facebook.displayName);
 })
 
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
