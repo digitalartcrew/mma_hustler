@@ -1,14 +1,19 @@
-<ion-header-bar class="bar-positive">
- <h1 class="title">Muay Thai</h1>
-</ion-header-bar>
+<ion-view view-title="Muay Thai">
 <ion-content lazy-scroll>
-  <ion-item ng-repeat="muaythai in muaythaiResults">
-  <center>
-    <h2>{{muaythai.name}}</h2>
-    <p>{{muaythai.location.city}},{{muaythai.location.state}}</p>
-    <h3>{{muaythai.url}}</h3>
-    <p>{{muaythai.contact.formmattedPhone}}</p>
-    </center>
- </ion-item>
+<label class="item item-input">
+	<i class="icon ion-search placeholder-icon"></i>
+	<input type="text" placeholder="Enter Zip Code to find an Muay Thai Gym">
+</label>
+<ion-item ng-repeat="muaythai in muaythaiResults">
+<center>
+	<h2>{{muaythai.name}}</h2>
+	<p>{{muaythai.location.city}},{{muaythai.location.state}}</p>
+	<h3>{{muaythai.url}}</h3>
+	<p>{{muaythai.contact.formmattedPhone}}</p>
+</center>
+</ion-item>
 </ion-content>
+
+
+
 
