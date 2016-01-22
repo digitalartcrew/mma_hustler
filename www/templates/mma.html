@@ -1,10 +1,12 @@
 <ion-view view-title="MMA">
 <ion-content lazy-scroll>
- <label class="item item-input">
-    <i class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="Enter Zip Code to find an MMA Gym">
-  </label>
-  <ion-item ng-repeat="mma in mmaResults">
+ <form class="navbar-form navbar-left" role="search">
+<label class="item item-input">
+  <i class="icon ion-search placeholder-icon"></i>
+  <input type="text" placeholder="Search" ng-model="mma.query">
+</label>
+</form>
+<ion-item ng-repeat="mma in mmaResults | filter: mma.query">
   <center>
     <h2>{{mma.name}}</h2>
     <p>{{mma.location.city}},{{mma.location.state}}</p>
@@ -13,4 +15,10 @@
     </center>
  </ion-item>
 </ion-content>
+
+
+
+
+
+
 

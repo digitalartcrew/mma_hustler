@@ -1,10 +1,12 @@
   <ion-view view-title="BOXING">
 <ion-content lazy-scroll>
- <label class="item item-input">
-    <i class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="Enter Zip Code to Boxing Gym Near You">
-  </label>
-  <ion-item ng-repeat="boxing in boxingResults">
+ <form class="navbar-form navbar-left" role="search">
+<label class="item item-input">
+  <i class="icon ion-search placeholder-icon"></i>
+  <input type="text" placeholder="Search" ng-model="boxing.query">
+</label>
+</form>
+<ion-item ng-repeat="boxing in boxingResults | filter: boxing.query">
   <center>
     <h2>{{boxing.name}}</h2>
     <p>{{boxing.location.city}},{{boxing.location.state}}</p>
