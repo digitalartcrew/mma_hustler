@@ -1,11 +1,13 @@
  <ion-view view-title="Fighters">
 <ion-content lazy-scroll>
+ <form class="navbar-form navbar-left" role="search">
  <label class="item item-input">
     <i class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="Search UFC Fighter Database">
+    <input type="text" placeholder="Search UFC Fighters" ng-model="fighter.query">
   </label>
+  </form>
 <div class="list">
-  <a ng-repeat="fighter in fighterObj"
+  <a ng-repeat="fighter in fighterObj | filter: fighter.query"
   class="item item-thumbnail-left">
   <img image-lazy-src={{fighter.thumbnail}}>
   <h2>{{fighter.first_name}} {{fighter.last_name}}</h2>
