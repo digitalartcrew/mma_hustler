@@ -36,7 +36,26 @@ img {
     line-height: 44px;
     color: white;
 }
-h1
+
+.input-label {
+    display: table;
+    padding: 7px 10px 7px 0px;
+    max-width: 200px;
+    width: 35%;
+    color: #fff;
+    font-size: 16px;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+    display: block;
+    padding-top: 2px;
+    padding-left: 0;
+    height: 34px;
+    color: #fff;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 16px;
+}
 
 ion-content.padding.scroll-content.ionic-scroll.has-header {
     background-color: #FF0000;
@@ -54,7 +73,7 @@ ion-content.padding.scroll-content.ionic-scroll.has-header {
     top: 0;
     border-top-width: 0;
     border-bottom-width: 1px;
-    background-color: #FF0000;
+    background-color: #000;
 }
 
 .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {

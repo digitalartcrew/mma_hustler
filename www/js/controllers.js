@@ -67,7 +67,18 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
         console.log("Error creating user:", error);
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
-        return $state.go('app.gyms');
+        var refAuth = $firebaseAuth(ref);
+        refAuth.$authWithPassword(user).then(function(authData){
+            $rootScope.displayName = user.email;
+            $scope.profileImageURL = "http://imgur.com/rVQ6mlF";
+            $scope.modal.hide();
+            $scope.loggedIn = true;
+            $rootScope.authData = authData;
+            console.log(authData);
+            return $state.go('app.gyms');
+          }).catch(function(error) {
+            console.error("ERROR: " + error);
+          });
       }
     });
   };
