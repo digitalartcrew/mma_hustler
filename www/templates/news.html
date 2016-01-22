@@ -1,11 +1,9 @@
-<ion-view view-title="Top Ranked Fighters">
-  <ion-content>
+<ion-view view-title="TOP RANKED UFC FIGHTERS">
     <ion-list>
-    <ion-item ng-repeat="p4p in p4pResults">
+    <ion-item ng-repeat="p4p in p4pResults track by $index">
 	<center>
-	<p>{{p4p.athlete.description}}</p>
+	<p>{{$index}}. {{p4p.athlete.description}}</p>
 	</center>
     </ion-item>
     </ion-list>
-  </ion-content>
 </ion-view>

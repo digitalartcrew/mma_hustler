@@ -1,18 +1,20 @@
- <ion-view view-title="Events">
-  <search-bar ng-model="search"></search-bar>
- <ion-header-bar class="bar-positive">
- <h1 class="title">Events</h1>
-</ion-header-bar>
+ <ion-view view-title="EVENTS">
 <ion-content lazy-scroll>
+ <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Search Events">
+  </label>
 <div class="list">
-  <a ng-repeat="event in eventObj" class="item">
-  <img width="100%" image-lazy-src={{event[5]}}>
-  <h2>{{event[1]}}</h2>
-  <h3>{{event[7]}}</h3>
-  <p>{{event[2]}}</p>
-  <p>{{event[3] | date:'MM-dd-yyyy'}}</p>
-  <button nghref={{event[6]}}>Buy Tickets</button>
-</a>
+	<ion-tem ng-repeat="event in eventObj" class="item">
+	<img width="100%" image-lazy-src={{event[5]}}>
+	<center>
+		<h1>{{event[1]}}</h1>
+		<h3>{{event[7]}}</h3>
+		<p>{{event[2]}}</p>
+		<p>{{event[3] | date:'MM-dd-yyyy'}}</p>
+		<button nghref={{event[6]}}>Buy Tickets</button>
+	</center>
+</ion-tem>
 </a>
 </div>
 </ion-content>

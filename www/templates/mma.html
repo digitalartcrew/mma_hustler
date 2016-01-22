@@ -1,8 +1,9 @@
 <ion-view view-title="MMA">
-<ion-header-bar class="bar-positive">
- <h1 class="title">mma</h1>
-</ion-header-bar>
 <ion-content lazy-scroll>
+ <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Enter Zip Code to find an MMA Gym">
+  </label>
   <ion-item ng-repeat="mma in mmaResults">
   <center>
     <h2>{{mma.name}}</h2>

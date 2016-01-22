@@ -1,8 +1,9 @@
 <ion-view view-title="Yoga">
-<ion-header-bar class="bar-positive">
- <h1 class="title">Yoga</h1>
-</ion-header-bar>
 <ion-content lazy-scroll>
+ <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Enter Zip Code to find an Yoga studio">
+  </label>
   <ion-item ng-repeat="yoga in yogaResults">
   <center>
     <h2>{{yoga.name}}</h2>

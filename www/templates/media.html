@@ -1,8 +1,9 @@
-<ion-view view-title="Media">
- <ion-header-bar class="bar-positive">
- <h1 class="title">Media</h1>
-</ion-header-bar>
+<ion-view view-title="MEDIA">
   <ion-content lazy-scroll>
+   <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Search UFC Fighter Database">
+  </label>
     <ion-list>
     <ion-item ng-repeat="image in images">
     <p><img width="100%" image-lazy-src="{{image}}"></p>
