@@ -7,8 +7,12 @@ ion-content.padding.dark-item.scroll-content.ionic-scroll.has-header.has-footer 
     );
 }
 
+#profile-image {
+    border-radius: 50%;
+    margin-left: 65px;
+}
+
 img {
-    -webkit-user-drag: none;
     padding-top: 5px;
 }
 
