@@ -6,6 +6,8 @@
     <input type="text" placeholder="Search Events" ng-model="event.query">
   </label>
   </form>
+
+  
 <div class="list">
 	<ion-tem ng-repeat="event in eventObj | filter: event.query" class="item">
 	<img width="100%" image-lazy-src={{event[5]}}>

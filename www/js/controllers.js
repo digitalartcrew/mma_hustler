@@ -90,7 +90,7 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
       password: user.password
     }).then(function(authData) {
       $rootScope.displayName = user.email;
-      $scope.profileImageURL = "http://imgur.com/rVQ6mlF";
+      $scope.profileImageURL = "http://i.imgur.com/rVQ6mlF.png";
       $scope.modal.hide();
       $scope.loggedIn = true;
       $rootScope.authData = authData;
@@ -158,6 +158,9 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
 
+.controller('GymsCtrl', function($scope, $stateParams) {
+})
+
 .controller('EventsCtrl', function($scope, $stateParams,mmaService) {
  mmaService.events().then(function(res){
    eventObj = [];
@@ -193,14 +196,7 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
 });
 })
 
-.controller('StoryCtrl', function($scope, $stateParams) {
-})
 
-.controller('GymsCtrl', function($scope) {})
-
-.controller('ProgressCtrl', function($scope) {})
-
-.controller('MessageCtrl', function($scope) {})
 
 .controller('FilmsCtrl', function($scope,$http) {
  $scope.video1 = ['6hK14hRi4Vs'];
@@ -326,23 +322,10 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
 
 
 
-.controller('ChatsCtrl',function($scope,$rootScope) {
-  //User Generates a JWT Token
-  var FirebaseTokenGenerator = require("firebase-token-generator");
-  var tokenGenerator = new FirebaseTokenGenerator(process.env.FB_SECRET);
-  var token = tokenGenerator.createToken({uid: $rootScope.authData.uid, some: "arbitrary", data: "here"});
-// Create a new Firebase reference, and a new instance of the Login client
-// console.log($rootScope.authData.uid);
-// console.log($rootScope.displayName);
-var chatRef = new Firebase('https://shining-fire-8120.firebaseio.com/chat');
-var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
-chat.setUser($rootScope.authData.uid, function(){
-  if(!$rootScope.authData.facebook.displayName){
-    return $rootScope.displayName;
-  }else{
-    return $rootScope.authData.facebook.displayName;
-  }});
-
+.controller('ChatsCtrl', function($scope,$rootScope) {
+  var chatRef = new Firebase('https://shining-fire-8120.firebaseio.com/chat');
+    var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
+    chat.setUser($rootScope.authData.uid,$rootScope.displayName);
 })
 
 
@@ -351,3 +334,8 @@ chat.setUser($rootScope.authData.uid, function(){
     enableFriends: true
   };
 });
+
+
+
+
+

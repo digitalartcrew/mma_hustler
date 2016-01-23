@@ -12,7 +12,10 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
 
 .run(function($ionicPlatform,$rootScope, $state,$window, OpenFB) {
 
-  OpenFB.init('1679579365644407');
+ 
+
+  OpenFB.init('1679579365644407', 'http://localhost:8100/oauthcallback.html', window.sessionStorage);
+
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -35,17 +38,14 @@ app.run(function(MyDataService) {
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
             if (!$window.localStorage["firebase:session::shining-fire-8120"]) {
-                $state.go('app.media');
-                event.preventDefault();
+                $state.go('app.gyms');
             }
         });
 
         $rootScope.$on('OAuthException', function() {
-            $state.go('app.media');
+            $state.go('app.gyms');
         });
   });
-
-
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -55,6 +55,13 @@ app.run(function(MyDataService) {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
+    controller: 'AppCtrl'
+  })
+
+    .state('app.login', {
+    url: '/login',
+    abstract: true,
+    templateUrl: 'templates/login.html',
     controller: 'AppCtrl'
   })
 
