@@ -1,37 +1,37 @@
 app.factory('mmaService', function($http, $q) {
 	return {
 		news: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/news');
+			return $http.get('http://mma-backend-service.mybluemix.net/news');
 		},
 		media: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/media');
+			return $http.get('http://mma-backend-service.mybluemix.net/media');
 		},
 		fighters: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/fighters');
+			return $http.get('http://mma-backend-service.mybluemix.net/fighters');
 		},
 		events: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/events');
+			return $http.get('http://mma-backend-service.mybluemix.net/events');
 		},
 		boxing: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/boxing');
+			return $http.get('http://mma-backend-service.mybluemix.net/boxing');
 		},
 		mma: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/mma');
+			return $http.get('http://mma-backend-service.mybluemix.net/mma');
 		},
 		bjj: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/bjj');
+			return $http.get('http://mma-backend-service.mybluemix.net/bjj');
 		},
 		muaythai: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/muaythai');
+			return $http.get('http://mma-backend-service.mybluemix.net/muaythai');
 		},
 		yoga: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/yoga');
+			return $http.get('http://mma-backend-service.mybluemix.net/yoga');
 		},
 		fitness: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/fitness');
+			return $http.get('http://mma-backend-service.mybluemix.net/fitness');
 		},
 		wrestling: function(){
-			return $http.get('https://mma-hustler.herokuapp.com/wrestling');
+			return $http.get('http://mma-backend-service.mybluemix.net/wrestling');
 		},
 	};
 
