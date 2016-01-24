@@ -124,10 +124,7 @@ ion-header-bar.bar-positive.bar.bar-header {
 
 .scroll {
     padding: 10px;
-    background-image:
-    linear-gradient(
-      gray, black
-    );
+    background-color: #fff;
 }
 
 .item-complex .item-content, .item-radio .item-content {

@@ -20,11 +20,11 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-app.run(function(MyDataService) {
-  setTimeout(function() {
-    $cordovaSplashscreen.hide();
-  }, 10000);
-});
+  app.run(function(MyDataService) {
+    setTimeout(function() {
+      $cordovaSplashscreen.hide();
+    }, 10000);
+  });
 
   if (window.cordova && window.cordova.plugins.Keyboard) {
     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -37,14 +37,14 @@ app.run(function(MyDataService) {
     }
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
-            if (!$window.localStorage["firebase:session::shining-fire-8120"]) {
-                $state.go('app.gyms');
-            }
-        });
+      if (!$window.localStorage["firebase:session::shining-fire-8120"]) {
+        $state.go('app.gyms');
+      }
+    });
 
-        $rootScope.$on('OAuthException', function() {
-            $state.go('app.gyms');
-        });
+    $rootScope.$on('OAuthException', function() {
+      $state.go('app.gyms');
+    });
   });
 })
 
@@ -58,7 +58,7 @@ app.run(function(MyDataService) {
     controller: 'AppCtrl'
   })
 
-    .state('app.login', {
+  .state('app.login', {
     url: '/login',
     abstract: true,
     templateUrl: 'templates/login.html',
@@ -75,7 +75,7 @@ app.run(function(MyDataService) {
     }
   })
 
-    .state('app.mma', {
+  .state('app.mma', {
     url: '/mma',
     views: {
       'menuContent': {
@@ -125,7 +125,7 @@ app.run(function(MyDataService) {
     }
   })
 
-    .state('app.muaythai', {
+  .state('app.muaythai', {
     url: '/muaythai',
     views: {
       'menuContent': {
