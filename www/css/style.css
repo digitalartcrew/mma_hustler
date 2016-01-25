@@ -157,6 +157,10 @@ a.item-content {
 
 .scroll {
     height: 100%;
+    background-image:
+    linear-gradient(
+      red,white,black,red, black,white
+    );
 
 }
 
