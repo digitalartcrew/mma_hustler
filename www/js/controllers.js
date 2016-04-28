@@ -51,16 +51,17 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
     return $state.go('app.signup');
   };
 
-  $scope.signupEmail = function(user){  
+  $scope.signupEmail = function(user){
+    refAuth = $firebaseAuth(ref);  
     ref.createUser({
       email    : user.email,
       password : user.password
-    }, function(error, userData) {
+    }, function(error, authData) {
       if (error) {
         console.log("Error creating user:", error);
       } else {
-        console.log("Successfully created user account with uid:", userData.uid);
-        var refAuth = $firebaseAuth(ref);
+        console.log("Successfully created user account with uid:", authData.uid);
+       
         refAuth.$authWithPassword(user).then(function(authData){
             $rootScope.displayName = user.email;
             $scope.profileImageURL = "http://imgur.com/rVQ6mlF";
@@ -74,10 +75,13 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
           });
       }
     });
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
   };
 
   $scope.loginEmail = function(user){
-    var refAuth = $firebaseAuth(ref);
+    refAuth = $firebaseAuth(ref);
     refAuth.$authWithPassword({
       email: user.email,
       password: user.password

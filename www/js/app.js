@@ -14,7 +14,7 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'starter.cont
 
  
 
-  OpenFB.init('1679579365644407', 'http://localhost:8100/oauthcallback.html', window.sessionStorage);
+  OpenFB.init('726601700814667', 'http://localhost:8100/oauthcallback.html', window.sessionStorage);
 
 
   $ionicPlatform.ready(function() {
