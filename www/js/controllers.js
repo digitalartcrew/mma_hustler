@@ -62,18 +62,18 @@ angular.module('starter.controllers', ['youtube-embed','firebase'])
       } else {
         console.log("Successfully created user account with uid:", user);
        
-    // refAuth.$authWithPassword({
-    //   email: user.email,
-    //   password: user.password
-    // }
-    // ).then(function(authData,user){
-            // $rootScope.displayName = user.email;
-            // $scope.profileImageURL = "http://imgur.com/rVQ6mlF";
-            // $scope.modal.hide();
-            // $scope.loggedIn = true;
-            // $rootScope.authData = authData;
-            // console.log(user.email);
-            // console.log(authData);
+    refAuth.$authWithPassword({
+      email: user.email,
+      password: user.password
+    }
+    ).then(function(authData,user){
+            $rootScope.displayName = user.email;
+            $scope.profileImageURL = "http://imgur.com/rVQ6mlF";
+            $scope.modal.hide();
+            $scope.loggedIn = true;
+            $rootScope.authData = authData;
+            console.log(user.email);
+            console.log(authData);
             return $state.go('app.gyms')
           })
           .catch(function(error) {

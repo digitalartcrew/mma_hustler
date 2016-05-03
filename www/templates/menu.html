@@ -16,7 +16,7 @@
       <h1 class="title">MMA HUSTLER</h1>
     </ion-header-bar>
     <ion-content>
-     <img id="profile-image" ng-show="isLoggedIn()" data-ng-src="{{profileImageURL}}">
+     <img style="width:100px;height:100px;" id="profile-image" ng-show="isLoggedIn()" data-ng-src="{{profileImageURL}}">
      <button ng-show="isLoggedIn()" class="button button-icon button-clear namer"> Hi, {{displayName}}</button>
       <ion-list>
         <ion-item menu-close ng-hide="isLoggedIn()" ng-click="login()"><i class="icon ion-images"></i>
